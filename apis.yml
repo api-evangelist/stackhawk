@@ -4,8 +4,7 @@ url: >-
 apis:
   - aid: stackhawk:stackhawk
     name: StackHawk
-    tags:
-      - API
+    tags: []
     humanURL: >-
       https://www.stackhawk.com/blog/what-is-api-discovery-everything-you-need-to-know/
     properties:
@@ -17,10 +16,10 @@ apis:
       understanding the APIs within a specific environment.
 name: StackHawk
 tags:
-  - Security
   - Discovery
   - Identifying
   - Platform
+  - Security
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
