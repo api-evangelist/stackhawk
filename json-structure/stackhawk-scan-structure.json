@@ -1,0 +1,14 @@
+{
+  "title": "StackHawk Scan",
+  "description": "Structure of a scan result returned by the StackHawk API",
+  "type": "object",
+  "fields": [
+    { "name": "scanId", "type": "string", "required": true },
+    { "name": "appId", "type": "string", "required": true },
+    { "name": "envId", "type": "string", "required": true },
+    { "name": "status", "type": "string", "enum": ["RUNNING", "COMPLETED", "FAILED"], "required": true },
+    { "name": "startedAt", "type": "string", "format": "date-time" },
+    { "name": "completedAt", "type": "string", "format": "date-time" },
+    { "name": "findingCount", "type": "integer" }
+  ]
+}

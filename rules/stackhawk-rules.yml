@@ -1,0 +1,76 @@
+rules:
+  stackhawk-operation-ids:
+    description: All operations must have a camelCase operationId
+    message: 'Operation must have a camelCase operationId: {{path}}'
+    severity: error
+    given: '$.paths[*][*]'
+    then:
+      field: operationId
+      function: truthy
+
+  stackhawk-tags-required:
+    description: All operations must have at least one tag
+    message: 'Operation at {{path}} must have at least one tag'
+    severity: error
+    given: '$.paths[*][*]'
+    then:
+      field: tags
+      function: truthy
+
+  stackhawk-api-versioned-path:
+    description: All StackHawk API paths should begin with /api/v1/ or /api/v2/
+    message: 'Path {{path}} must begin with /api/v1/ or /api/v2/'
+    severity: warn
+    given: '$.paths[*]~'
+    then:
+      function: pattern
+      functionOptions:
+        match: '^/api/v[12]/'
+
+  stackhawk-bearer-auth:
+    description: Non-login operations must use BearerAuth
+    message: 'Operation at {{path}} must use BearerAuth security scheme'
+    severity: warn
+    given: '$.paths[*][*]'
+    then:
+      field: security
+      function: truthy
+
+  stackhawk-org-id-param:
+    description: Organization-scoped endpoints must use orgId path parameter
+    message: 'Organization endpoint should use orgId parameter name'
+    severity: warn
+    given: "$.paths['/api/v1/org/{orgId}'][*].parameters[?(@.in=='path')]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          properties:
+            name:
+              pattern: '^orgId$'
+
+  stackhawk-successful-response:
+    description: All operations must define at least one success response
+    message: 'Operation at {{path}} must define a 200, 201, 202, or 204 response'
+    severity: error
+    given: '$.paths[*][*].responses'
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ['200']
+            - required: ['201']
+            - required: ['202']
+            - required: ['204']
+
+  stackhawk-delete-returns-204:
+    description: DELETE operations should return 204 No Content
+    message: 'DELETE operation at {{path}} should return 204'
+    severity: warn
+    given: '$.paths[*].delete.responses'
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          required: ['204']

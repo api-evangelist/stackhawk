@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "stackhawk": "https://api.stackhawk.com/schema/",
+    "scanId": "stackhawk:scanIdentifier",
+    "findingId": "stackhawk:findingIdentifier",
+    "appId": "stackhawk:applicationIdentifier",
+    "envId": "stackhawk:environmentIdentifier",
+    "orgId": "stackhawk:organizationIdentifier",
+    "severity": "stackhawk:severity",
+    "Scan": {
+      "@id": "stackhawk:Scan",
+      "@type": "@id"
+    },
+    "Finding": {
+      "@id": "stackhawk:SecurityFinding",
+      "@type": "@id"
+    },
+    "Application": {
+      "@id": "schema:SoftwareApplication",
+      "@type": "@id"
+    },
+    "ScanPolicy": {
+      "@id": "stackhawk:SecurityPolicy",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "stackhawk:status"
+  }
+}

@@ -1,0 +1,338 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "StackHawk API"
+  description: "StackHawk application and API security testing platform. Manage applications, scan configurations, results, findings, policies, and teams."
+  tags:
+    - API Security
+    - DAST
+    - Security Testing
+    - Vulnerability Management
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      STACKHAWK_API_KEY: STACKHAWK_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: stackhawk
+      baseUri: https://api.stackhawk.com
+      description: "StackHawk API security testing platform"
+      authentication:
+        type: bearer
+        token: "{{STACKHAWK_API_KEY}}"
+      resources:
+        - name: auth
+          path: /api/v1/auth
+          description: "Authentication and token management"
+          operations:
+            - name: login
+              method: GET
+              description: "Authenticate with API key to obtain JWT token"
+              inputParameters:
+                - name: X-ApiKey
+                  in: header
+                  type: string
+                  required: true
+                  description: "StackHawk API key"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: applications
+          path: /api/v2/org/{orgId}/apps
+          description: "Manage applications"
+          operations:
+            - name: list-applications
+              method: GET
+              description: "List all applications for an organization"
+              inputParameters:
+                - name: orgId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Organization ID"
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-application
+              method: GET
+              description: "Get application details"
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: scans
+          path: /api/v1/app/{appId}/env/{envId}/scan
+          description: "Scan results and findings"
+          operations:
+            - name: list-scans
+              method: GET
+              description: "List scans for an application environment"
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                - name: envId
+                  in: path
+                  type: string
+                  required: true
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-scan
+              method: GET
+              description: "Get details for a specific scan"
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                - name: envId
+                  in: path
+                  type: string
+                  required: true
+                - name: scanId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: list-findings
+              method: GET
+              description: "List all security findings from a scan"
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                - name: envId
+                  in: path
+                  type: string
+                  required: true
+                - name: scanId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-finding
+              method: GET
+              description: "Get details for a specific security finding"
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                - name: envId
+                  in: path
+                  type: string
+                  required: true
+                - name: scanId
+                  in: path
+                  type: string
+                  required: true
+                - name: findingId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: policies
+          path: /api/v1/org/{orgId}/policy
+          description: "Scan policy management"
+          operations:
+            - name: list-policies
+              method: GET
+              description: "List all scan policies"
+              inputParameters:
+                - name: orgId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: perch
+          path: /api/v1/perch
+          description: "Perch scan control"
+          operations:
+            - name: request-perch-scan
+              method: POST
+              description: "Trigger a scan via Perch"
+              body:
+                type: json
+                data:
+                  appId: "{{tools.app_id}}"
+                  envId: "{{tools.env_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-perch-scan-status
+              method: GET
+              description: "Get status of a Perch-initiated scan"
+              inputParameters:
+                - name: scanId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: stackhawk-rest
+      resources:
+        - path: /v1/applications
+          name: applications
+          description: "Applications"
+          operations:
+            - method: GET
+              name: list-applications
+              description: "List applications"
+              call: "stackhawk.list-applications"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/scans
+          name: scans
+          description: "Security scans"
+          operations:
+            - method: GET
+              name: list-scans
+              description: "List scans"
+              call: "stackhawk.list-scans"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/findings
+          name: findings
+          description: "Security findings"
+          operations:
+            - method: GET
+              name: list-findings
+              description: "List findings from a scan"
+              call: "stackhawk.list-findings"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: stackhawk-mcp
+      transport: http
+      tools:
+        - name: list-applications
+          description: "List all StackHawk applications for an organization"
+          hints:
+            readOnly: true
+          call: "stackhawk.list-applications"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-scans
+          description: "List security scans for an application environment"
+          hints:
+            readOnly: true
+          call: "stackhawk.list-scans"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-scan
+          description: "Get details for a specific scan"
+          hints:
+            readOnly: true
+          call: "stackhawk.get-scan"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-findings
+          description: "List security findings from a scan"
+          hints:
+            readOnly: true
+          call: "stackhawk.list-findings"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-finding
+          description: "Get detailed information about a specific security finding"
+          hints:
+            readOnly: true
+          call: "stackhawk.get-finding"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: request-perch-scan
+          description: "Trigger a DAST security scan via StackHawk Perch"
+          hints:
+            readOnly: false
+          call: "stackhawk.request-perch-scan"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-policies
+          description: "List scan policies for an organization"
+          hints:
+            readOnly: true
+          call: "stackhawk.list-policies"
+          outputParameters:
+            - type: object
+              mapping: "$."

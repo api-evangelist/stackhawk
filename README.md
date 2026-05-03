@@ -1,41 +1,82 @@
-# StackHawk (stackhawk)
-API discovery is the process of identifying, documenting, and understanding the APIs within a specific environment.
+# StackHawk
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/stackhawk/refs/heads/main/apis.yml)
+StackHawk is an application and API security testing platform that helps engineering teams find, triage, and fix security vulnerabilities in their APIs and web applications. It provides Dynamic Application Security Testing (DAST) with deep OpenAPI spec integration, CI/CD pipeline automation, AI-powered OpenAPI spec generation, and an AppSec Intelligence platform for program-level visibility across the software development lifecycle.
 
-## Scope
+**Website:** [https://www.stackhawk.com/](https://www.stackhawk.com/)
+**Documentation:** [https://docs.stackhawk.com/](https://docs.stackhawk.com/)
+**API Docs:** [https://apidocs.stackhawk.com/docs](https://apidocs.stackhawk.com/docs)
 
-- **Type:** Index 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+## Tags
 
-## Tags:
-
- - Security, Discovery, Identifying, Platform
-
-## Timestamps
-
-- **Created:** 2025-01-08 
-- **Modified:** 2026-03-16 
+- API Security, Application Security, DAST, Security Testing, Vulnerability Management
 
 ## APIs
 
-### StackHawk
-API discovery is the process of identifying, documenting, and understanding the APIs within a specific environment.
+### StackHawk API
+Programmatic management of applications, environments, scan configurations, results, findings, repositories, teams, policies, and security reports.
 
-**Human URL:** [https://www.stackhawk.com/blog/what-is-api-discovery-everything-you-need-to-know/](https://www.stackhawk.com/blog/what-is-api-discovery-everything-you-need-to-know/)
+- **Base URL:** `https://api.stackhawk.com`
+- **Authentication:** Bearer JWT (obtained via `/api/v1/auth/login` with API key)
+- **OpenAPI Spec:** [https://download.stackhawk.com/openapi/stackhawk-openapi.json](https://download.stackhawk.com/openapi/stackhawk-openapi.json)
 
+## OpenAPI Specifications
 
-#### Tags:
+| Spec | Path |
+|---|---|
+| StackHawk API | [openapi/stackhawk-openapi.yml](openapi/stackhawk-openapi.yml) |
 
- - API
+## Spectral Rules
 
-#### Properties
+| Ruleset | Path |
+|---|---|
+| StackHawk API Rules | [rules/stackhawk-rules.yml](rules/stackhawk-rules.yml) |
 
-- [Documentation](https://www.stackhawk.com/blog/what-is-api-discovery-everything-you-need-to-know/)
+## Naftiko Capabilities
 
-## Maintainers
+### Shared Definitions
 
-**FN:** Kin Lane
+| API | Path |
+|---|---|
+| StackHawk API | [capabilities/shared/stackhawk-api.yaml](capabilities/shared/stackhawk-api.yaml) |
 
-**Email:** kin@apievangelist.com
+### Workflow Capabilities
+
+| Workflow | Description | Path |
+|---|---|---|
+| API Security Testing | End-to-end DAST scan management, findings triage, and policy enforcement | [capabilities/api-security-testing.yaml](capabilities/api-security-testing.yaml) |
+
+## JSON Schema
+
+| Schema | Path |
+|---|---|
+| Scan | [json-schema/stackhawk-scan-schema.json](json-schema/stackhawk-scan-schema.json) |
+| Security Finding | [json-schema/stackhawk-finding-schema.json](json-schema/stackhawk-finding-schema.json) |
+
+## JSON Structure
+
+| Structure | Path |
+|---|---|
+| Scan | [json-structure/stackhawk-scan-structure.json](json-structure/stackhawk-scan-structure.json) |
+
+## JSON-LD
+
+| Context | Path |
+|---|---|
+| StackHawk Context | [json-ld/stackhawk-context.jsonld](json-ld/stackhawk-context.jsonld) |
+
+## Examples
+
+| Example | Path |
+|---|---|
+| List Findings | [examples/stackhawk-list-findings-example.json](examples/stackhawk-list-findings-example.json) |
+
+## Vocabulary
+
+| Vocabulary | Path |
+|---|---|
+| StackHawk Vocabulary | [vocabulary/stackhawk-vocabulary.yml](vocabulary/stackhawk-vocabulary.yml) |
+
+## Timestamps
+
+- **Created:** 2025-01-08
+- **Modified:** 2026-05-02

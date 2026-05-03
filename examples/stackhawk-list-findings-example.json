@@ -1,0 +1,36 @@
+{
+  "title": "List Findings Example",
+  "description": "Retrieve all security findings from a completed scan",
+  "request": {
+    "method": "GET",
+    "url": "https://api.stackhawk.com/api/v1/app/app-abc123/env/env-xyz789/scan/scan-001/finding",
+    "headers": {
+      "Authorization": "Bearer {{JWT_TOKEN}}"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "findings": [
+        {
+          "findingId": "finding-001",
+          "scanId": "scan-001",
+          "severity": "HIGH",
+          "title": "SQL Injection",
+          "description": "User input is not properly sanitized before being used in a SQL query.",
+          "path": "/api/v1/users/search",
+          "method": "GET"
+        },
+        {
+          "findingId": "finding-002",
+          "scanId": "scan-001",
+          "severity": "MEDIUM",
+          "title": "Missing Security Headers",
+          "description": "The API response is missing recommended security headers such as X-Content-Type-Options.",
+          "path": "/api/v1/products",
+          "method": "GET"
+        }
+      ]
+    }
+  }
+}

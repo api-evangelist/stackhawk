@@ -1,0 +1,87 @@
+vocabulary:
+  name: StackHawk
+  description: Domain vocabulary for the StackHawk API security testing platform
+  terms:
+    - term: DAST
+      definition: >-
+        Dynamic Application Security Testing — a security testing methodology
+        that tests a running application by simulating real attacks from outside
+        the application, without access to source code.
+      aliases:
+        - Dynamic Testing
+        - Black-Box Testing
+
+    - term: Finding
+      definition: >-
+        A specific security vulnerability or weakness discovered during a DAST
+        scan. Findings include severity, affected endpoint, and remediation guidance.
+      aliases:
+        - Vulnerability
+        - Issue
+        - Alert
+
+    - term: Scan
+      definition: >-
+        A security test execution targeting an application environment. Scans
+        run DAST tests against live endpoints and produce a set of findings.
+      aliases:
+        - Security Test
+        - Test Run
+
+    - term: Application
+      definition: >-
+        A software system registered in StackHawk for security testing. Contains
+        one or more environments (e.g., development, staging, production).
+      aliases:
+        - App
+        - Service
+
+    - term: Environment
+      definition: >-
+        A deployment instance of an application (e.g., staging, production).
+        Each environment has its own scan history and configuration.
+      aliases:
+        - Deployment
+        - Instance
+
+    - term: Scan Policy
+      definition: >-
+        A set of rules defining what security tests to run, which findings
+        to block on, and how to handle specific vulnerability types.
+      aliases:
+        - Security Policy
+        - Policy
+
+    - term: Perch
+      definition: >-
+        StackHawk's scan command interface that enables triggering scans
+        programmatically from CI/CD pipelines and external systems.
+      aliases:
+        - Scan Trigger
+        - CI Integration
+
+    - term: Hosted OAS
+      definition: >-
+        An OpenAPI Specification file uploaded to StackHawk to guide DAST
+        testing by providing endpoint definitions, parameter schemas, and
+        authentication requirements.
+      aliases:
+        - OpenAPI Spec
+        - Swagger File
+
+    - term: Profile Scan
+      definition: >-
+        An API discovery scan that identifies all endpoints in an application
+        without executing security tests — used to generate or validate
+        OpenAPI specifications.
+      aliases:
+        - API Discovery
+        - Endpoint Discovery
+
+    - term: Severity
+      definition: >-
+        A classification of a finding's risk level: LOW, MEDIUM, HIGH, or CRITICAL.
+        Used to prioritize remediation efforts.
+      aliases:
+        - Risk Level
+        - Criticality

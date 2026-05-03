@@ -1,0 +1,1718 @@
+openapi: 3.0.1
+info:
+  title: StackHawk API
+  description: >-
+    The StackHawk Public API provides programmatic access to the StackHawk
+    application and API security testing platform. Manage applications,
+    environments, scan configurations, scan results, findings, repositories,
+    teams, policies, and security reports. Authentication requires obtaining
+    a JWT token via the /api/v1/auth/login endpoint using an API key from the
+    StackHawk platform settings.
+  version: 0.0.1
+  contact:
+    url: https://www.stackhawk.com/
+    email: support@stackhawk.com
+  termsOfService: https://www.stackhawk.com/terms/
+servers:
+  - url: https://api.stackhawk.com
+    description: StackHawk API
+security:
+  - BearerAuth: []
+tags:
+  - name: Api Authentication
+    description: Token management and login
+  - name: Applications
+    description: Manage applications and environments
+  - name: Organizations
+    description: Member management and audit logs
+  - name: Organization Teams
+    description: Team creation and member assignment
+  - name: Hosted OAS
+    description: OpenAPI spec uploads and mapping
+  - name: Scan Configuration
+    description: Scan configuration file management
+  - name: Scan Results
+    description: Scan result reporting and findings
+  - name: Global Configuration
+    description: Organization-level configurations
+  - name: Repositories
+    description: Repository management
+  - name: Reports
+    description: Scan report generation
+  - name: Perch
+    description: Scan command control
+  - name: User
+    description: Authenticated user information
+  - name: Scan Policies
+    description: Security policy management
+  - name: Profile Scans
+    description: Profile scan analysis
+paths:
+  /api/v1/auth/login:
+    get:
+      operationId: login
+      summary: Login With API Key
+      description: >-
+        Authenticate using an API key to obtain a JWT access token. The API key
+        is passed in the X-ApiKey header. Tokens expire after 30 minutes.
+      tags:
+        - Api Authentication
+      security: []
+      parameters:
+        - name: X-ApiKey
+          in: header
+          required: true
+          schema:
+            type: string
+          description: StackHawk API key from Settings > API Keys
+      responses:
+        '200':
+          description: JWT token response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JWT'
+  /api/v1/auth/refresh-token:
+    get:
+      operationId: refreshToken
+      summary: Refresh Token
+      description: Refresh an existing JWT access token before it expires.
+      tags:
+        - Api Authentication
+      responses:
+        '200':
+          description: Refreshed JWT token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JWT'
+  /api/v1/user:
+    get:
+      operationId: getUser
+      summary: Get Current User
+      description: Retrieve information about the currently authenticated user.
+      tags:
+        - User
+      responses:
+        '200':
+          description: Current user information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    post:
+      operationId: updateUser
+      summary: Update User Profile
+      description: Update profile information for the authenticated user.
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '200':
+          description: Updated user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/v1/org/{orgId}/app:
+    post:
+      operationId: createApplication
+      summary: Create Application
+      description: Create a new application in the specified organization.
+      tags:
+        - Applications
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Organization ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewApplicationRequest'
+      responses:
+        '200':
+          description: Created application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+  /api/v1/app/{orgId}/list:
+    get:
+      operationId: listApplications
+      summary: List Applications
+      description: List all applications for an organization.
+      tags:
+        - Applications
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of applications
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  applications:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Application'
+  /api/v2/org/{orgId}/apps:
+    get:
+      operationId: listApplicationsV2
+      summary: List Applications V2
+      description: Paginated list of applications for an organization (v2).
+      tags:
+        - Applications
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Paginated applications
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedApplications'
+  /api/v1/app/{appId}:
+    get:
+      operationId: getApplication
+      summary: Get Application
+      description: Retrieve details for a specific application.
+      tags:
+        - Applications
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Application details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+    post:
+      operationId: updateApplication
+      summary: Update Application
+      description: Update application settings.
+      tags:
+        - Applications
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationUpdateRequest'
+      responses:
+        '200':
+          description: Updated application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+    delete:
+      operationId: deleteApplication
+      summary: Delete Application
+      description: Delete a StackHawk application.
+      tags:
+        - Applications
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Application deleted
+  /api/v1/app/{appId}/env:
+    post:
+      operationId: createEnvironment
+      summary: Create Environment
+      description: Create a new environment for an application.
+      tags:
+        - Applications
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewEnvironmentRequest'
+      responses:
+        '200':
+          description: Created environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+  /api/v1/app/{appId}/env/list:
+    get:
+      operationId: listEnvironments
+      summary: List Environments
+      description: List all environments for an application.
+      tags:
+        - Applications
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of environments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  environments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Environment'
+  /api/v2/org/{orgId}/envs:
+    get:
+      operationId: listEnvironmentsV2
+      summary: List Environments V2
+      description: Paginated list of environments for an organization (v2).
+      tags:
+        - Applications
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Paginated environments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEnvironments'
+  /api/v1/app/{appId}/env/{envId}:
+    post:
+      operationId: updateEnvironment
+      summary: Update Environment
+      description: Update environment configuration.
+      tags:
+        - Applications
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentUpdateRequest'
+      responses:
+        '200':
+          description: Updated environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+    delete:
+      operationId: deleteEnvironment
+      summary: Delete Environment
+      description: Delete an application environment.
+      tags:
+        - Applications
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Environment deleted
+  /api/v1/app/{appId}/config/{configHash}:
+    get:
+      operationId: getApplicationConfig
+      summary: Get Application Config
+      description: Retrieve a specific application configuration by hash.
+      tags:
+        - Scan Configuration
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: configHash
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Application configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanConfiguration'
+  /api/v1/app/{appId}/scan-config:
+    get:
+      operationId: getScanConfiguration
+      summary: Get Scan Configuration
+      description: Get the scan configuration for an application.
+      tags:
+        - Scan Configuration
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scan configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanConfiguration'
+    post:
+      operationId: updateScanConfiguration
+      summary: Update Scan Configuration
+      description: Update the scan configuration for an application.
+      tags:
+        - Scan Configuration
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScanConfigurationUpdateRequest'
+      responses:
+        '200':
+          description: Updated scan configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanConfiguration'
+  /api/v1/org/{orgId}/scan-config:
+    get:
+      operationId: listOrgScanConfigurations
+      summary: List Organization Scan Configs
+      description: List all scan configurations for an organization.
+      tags:
+        - Scan Configuration
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of scan configurations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  scanConfigurations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScanConfiguration'
+    post:
+      operationId: createOrgScanConfiguration
+      summary: Create Scan Configuration
+      description: Create a new scan configuration for an organization.
+      tags:
+        - Scan Configuration
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScanConfigurationUpdateRequest'
+      responses:
+        '200':
+          description: Created scan configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanConfiguration'
+  /api/v1/app/{appId}/env/{envId}/scan:
+    get:
+      operationId: listScans
+      summary: List Scans
+      description: List all scans for an application environment.
+      tags:
+        - Scan Results
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of scans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanListResponse'
+  /api/v1/app/{appId}/env/{envId}/scan/{scanId}:
+    get:
+      operationId: getScan
+      summary: Get Scan
+      description: Retrieve details for a specific scan.
+      tags:
+        - Scan Results
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scanId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scan'
+    delete:
+      operationId: deleteScan
+      summary: Delete Scan
+      description: Delete a scan and its associated findings.
+      tags:
+        - Scan Results
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scanId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Scan deleted
+  /api/v1/app/{appId}/env/{envId}/scan/{scanId}/finding:
+    get:
+      operationId: listFindings
+      summary: List Findings
+      description: List all security findings from a specific scan.
+      tags:
+        - Scan Results
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scanId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of findings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindingListResponse'
+  /api/v1/app/{appId}/env/{envId}/scan/{scanId}/finding/{findingId}:
+    get:
+      operationId: getFinding
+      summary: Get Finding
+      description: Retrieve details for a specific security finding.
+      tags:
+        - Scan Results
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scanId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: findingId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Finding details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Finding'
+  /api/v1/app/{appId}/env/{envId}/scan/{scanId}/report:
+    get:
+      operationId: getScanReport
+      summary: Get Scan Report
+      description: Retrieve a generated scan report.
+      tags:
+        - Reports
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scanId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scan report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanReport'
+    post:
+      operationId: requestReport
+      summary: Request Report Generation
+      description: Request generation of a scan report.
+      tags:
+        - Reports
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scanId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Report generation requested
+  /api/v1/app/{appId}/env/{envId}/profile:
+    get:
+      operationId: getProfileScan
+      summary: Get Profile Scan Results
+      description: Get profile scan results for an application environment.
+      tags:
+        - Profile Scans
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Profile scan results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileScanResult'
+    post:
+      operationId: requestProfileAnalysis
+      summary: Request Profile Analysis
+      description: Request a new profile analysis for an application environment.
+      tags:
+        - Profile Scans
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: envId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Profile analysis requested
+  /api/v1/oas/{appId}/upload:
+    post:
+      operationId: uploadOpenAPISpec
+      summary: Upload OpenAPI Spec File
+      description: Upload an OpenAPI specification file for an application.
+      tags:
+        - Hosted OAS
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Upload confirmation
+  /api/v1/oas/{appId}/mapping:
+    get:
+      operationId: getOASMapping
+      summary: Get Application OpenAPI Specs
+      description: Retrieve the OpenAPI spec mapping for an application.
+      tags:
+        - Hosted OAS
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OpenAPI spec mapping
+    post:
+      operationId: mapOASSpec
+      summary: Map Application OpenAPI Specs
+      description: Map an OpenAPI spec to an application.
+      tags:
+        - Hosted OAS
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Mapping updated
+  /api/v1/global-configuration/{configName}:
+    get:
+      operationId: getGlobalConfiguration
+      summary: Get Global Configuration
+      description: Retrieve an organization-level global configuration by name.
+      tags:
+        - Global Configuration
+      parameters:
+        - name: configName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Global configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalConfiguration'
+  /api/v1/org/{orgId}/repository:
+    get:
+      operationId: listRepositories
+      summary: List Repositories
+      description: List all repositories for an organization.
+      tags:
+        - Repositories
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of repositories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repositories:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Repository'
+    post:
+      operationId: createRepository
+      summary: Create Repository
+      description: Register a new repository with an organization.
+      tags:
+        - Repositories
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewRepositoryRequest'
+      responses:
+        '200':
+          description: Created repository
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repository'
+  /api/v1/org/{orgId}/repository/{repoId}:
+    get:
+      operationId: getRepository
+      summary: Get Repository
+      description: Retrieve details for a specific repository.
+      tags:
+        - Repositories
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repoId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Repository details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repository'
+    post:
+      operationId: updateRepository
+      summary: Update Repository
+      description: Update repository configuration.
+      tags:
+        - Repositories
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repoId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepositoryUpdateRequest'
+      responses:
+        '200':
+          description: Updated repository
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repository'
+    delete:
+      operationId: deleteRepository
+      summary: Delete Repository
+      description: Remove a repository from an organization.
+      tags:
+        - Repositories
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repoId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Repository deleted
+  /api/v1/org/{orgId}/team:
+    post:
+      operationId: createTeam
+      summary: Create Team
+      description: Create a new team in an organization.
+      tags:
+        - Organization Teams
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewTeamRequest'
+      responses:
+        '200':
+          description: Created team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+  /api/v1/org/{orgId}/teams:
+    get:
+      operationId: listTeams
+      summary: Find Teams for Organization
+      description: List all teams in an organization.
+      tags:
+        - Organization Teams
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of teams
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teams:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
+  /api/v1/org/{orgId}/team/{teamId}:
+    get:
+      operationId: getTeam
+      summary: Get Team
+      description: Retrieve details for a specific team.
+      tags:
+        - Organization Teams
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Team details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+    put:
+      operationId: updateTeam
+      summary: Update Team
+      description: Update team information.
+      tags:
+        - Organization Teams
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+      responses:
+        '200':
+          description: Updated team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+    delete:
+      operationId: deleteTeam
+      summary: Delete Team
+      description: Delete a team from an organization.
+      tags:
+        - Organization Teams
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Team deleted
+  /api/v1/org/{orgId}/team/{teamId}/application:
+    put:
+      operationId: updateTeamApplications
+      summary: Update Team Application
+      description: Update the applications assigned to a team.
+      tags:
+        - Organization Teams
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                applicationIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Updated team applications
+  /api/v1/org/{orgId}/user/{userId}/teams:
+    get:
+      operationId: findTeamsForUser
+      summary: Find Teams for User
+      description: Retrieve all teams a specific user belongs to.
+      tags:
+        - Organization Teams
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Teams for user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teams:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
+  /api/v1/org/{orgId}/members:
+    get:
+      operationId: listMembers
+      summary: List Members
+      description: List all members of an organization.
+      tags:
+        - Organizations
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Organization members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberListResponse'
+  /api/v1/org/{orgId}/audit:
+    get:
+      operationId: getAuditHistory
+      summary: Get Audit History
+      description: Retrieve audit history for an organization. Enterprise feature.
+      tags:
+        - Organizations
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Audit history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditListResponse'
+  /api/v1/org/{orgId}/policy:
+    get:
+      operationId: listScanPolicies
+      summary: List Scan Policies
+      description: List all scan policies for an organization.
+      tags:
+        - Scan Policies
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of scan policies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScanPolicy'
+    post:
+      operationId: createScanPolicy
+      summary: Create Scan Policy
+      description: Create a new scan policy for an organization.
+      tags:
+        - Scan Policies
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewScanPolicyRequest'
+      responses:
+        '200':
+          description: Created scan policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanPolicy'
+  /api/v1/org/{orgId}/policy/{policyId}:
+    get:
+      operationId: getScanPolicy
+      summary: Get Scan Policy
+      description: Retrieve a specific scan policy.
+      tags:
+        - Scan Policies
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: policyId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scan policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanPolicy'
+    post:
+      operationId: updateScanPolicy
+      summary: Update Scan Policy
+      description: Update an existing scan policy.
+      tags:
+        - Scan Policies
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: policyId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScanPolicyUpdateRequest'
+      responses:
+        '200':
+          description: Updated scan policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanPolicy'
+    delete:
+      operationId: deleteScanPolicy
+      summary: Delete Scan Policy
+      description: Delete a scan policy.
+      tags:
+        - Scan Policies
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: policyId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Policy deleted
+  /api/v1/perch/scan:
+    post:
+      operationId: requestPerchScan
+      summary: Request Scan Via Perch
+      description: Trigger a scan via the Perch scan command interface.
+      tags:
+        - Perch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerchScanRequest'
+      responses:
+        '200':
+          description: Scan initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerchScanResponse'
+  /api/v1/perch/status/{scanId}:
+    get:
+      operationId: getPerchScanStatus
+      summary: Get Perch Scan Status
+      description: Retrieve the status of a Perch-initiated scan.
+      tags:
+        - Perch
+      parameters:
+        - name: scanId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scan status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerchScanStatus'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained via /api/v1/auth/login
+  schemas:
+    JWT:
+      type: object
+      properties:
+        token:
+          type: string
+          description: JWT access token
+        expiresAt:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        organizationId:
+          type: string
+    UserUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    Application:
+      type: object
+      properties:
+        applicationId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        organizationId:
+          type: string
+    NewApplicationRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    ApplicationUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    PaginatedApplications:
+      type: object
+      properties:
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        nextPageToken:
+          type: string
+    Environment:
+      type: object
+      properties:
+        envId:
+          type: string
+        appId:
+          type: string
+        name:
+          type: string
+        autoTag:
+          type: boolean
+    NewEnvironmentRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        autoTag:
+          type: boolean
+    EnvironmentUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    PaginatedEnvironments:
+      type: object
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+        nextPageToken:
+          type: string
+    ScanConfiguration:
+      type: object
+      properties:
+        configHash:
+          type: string
+        appId:
+          type: string
+        configData:
+          type: object
+          additionalProperties: true
+    ScanConfigurationUpdateRequest:
+      type: object
+      additionalProperties: true
+    Scan:
+      type: object
+      properties:
+        scanId:
+          type: string
+        appId:
+          type: string
+        envId:
+          type: string
+        status:
+          type: string
+          enum:
+            - RUNNING
+            - COMPLETED
+            - FAILED
+        startedAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+        findingCount:
+          type: integer
+    ScanListResponse:
+      type: object
+      properties:
+        scans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Scan'
+        nextPageToken:
+          type: string
+    Finding:
+      type: object
+      properties:
+        findingId:
+          type: string
+        scanId:
+          type: string
+        severity:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+            - CRITICAL
+        title:
+          type: string
+        description:
+          type: string
+        path:
+          type: string
+        method:
+          type: string
+    FindingListResponse:
+      type: object
+      properties:
+        findings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Finding'
+    ScanReport:
+      type: object
+      properties:
+        reportId:
+          type: string
+        scanId:
+          type: string
+        status:
+          type: string
+        url:
+          type: string
+    ProfileScanResult:
+      type: object
+      properties:
+        profileId:
+          type: string
+        appId:
+          type: string
+        envId:
+          type: string
+        discoveredEndpoints:
+          type: integer
+        analyzedAt:
+          type: string
+          format: date-time
+    Repository:
+      type: object
+      properties:
+        repositoryId:
+          type: string
+        organizationId:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+    NewRepositoryRequest:
+      type: object
+      required:
+        - name
+        - url
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+    RepositoryUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+    Team:
+      type: object
+      properties:
+        teamId:
+          type: string
+        organizationId:
+          type: string
+        name:
+          type: string
+        applicationIds:
+          type: array
+          items:
+            type: string
+    NewTeamRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+    TeamUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    MemberListResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    AuditRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        organizationId:
+          type: string
+        action:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        details:
+          type: object
+          additionalProperties: true
+    AuditListResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditRecord'
+        nextPageToken:
+          type: string
+    ScanPolicy:
+      type: object
+      properties:
+        policyId:
+          type: string
+        organizationId:
+          type: string
+        name:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    NewScanPolicyRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
+    ScanPolicyUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
+    GlobalConfiguration:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: object
+          additionalProperties: true
+    PerchScanRequest:
+      type: object
+      properties:
+        appId:
+          type: string
+        envId:
+          type: string
+        configOptions:
+          type: object
+          additionalProperties: true
+    PerchScanResponse:
+      type: object
+      properties:
+        scanId:
+          type: string
+        status:
+          type: string
+    PerchScanStatus:
+      type: object
+      properties:
+        scanId:
+          type: string
+        status:
+          type: string
+          enum:
+            - QUEUED
+            - RUNNING
+            - COMPLETED
+            - FAILED
+        progress:
+          type: integer
