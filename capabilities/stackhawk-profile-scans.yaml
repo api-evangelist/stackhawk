@@ -1,0 +1,125 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Profile Scans
+  description: 'StackHawk API — Profile Scans. 2 operations. Lead operation: Get Profile Scan Results. Self-contained Naftiko
+    capability covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Profile Scans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-profile-scans
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Profile Scans business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-app-appId-env-envId-profile
+      path: /api/v1/app/{appId}/env/{envId}/profile
+      operations:
+      - name: getprofilescan
+        method: GET
+        description: Get Profile Scan Results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: envId
+          in: path
+          type: string
+          required: true
+      - name: requestprofileanalysis
+        method: POST
+        description: Request Profile Analysis
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: envId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-profile-scans-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Profile Scans. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/app/{appid}/env/{envid}/profile
+      name: api-v1-app-appid-env-envid-profile
+      description: REST surface for api-v1-app-appId-env-envId-profile.
+      operations:
+      - method: GET
+        name: getprofilescan
+        description: Get Profile Scan Results
+        call: stackhawk-profile-scans.getprofilescan
+        with:
+          appId: rest.appId
+          envId: rest.envId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: requestprofileanalysis
+        description: Request Profile Analysis
+        call: stackhawk-profile-scans.requestprofileanalysis
+        with:
+          appId: rest.appId
+          envId: rest.envId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-profile-scans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Profile Scans. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-profile-scan-results
+      description: Get Profile Scan Results
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-profile-scans.getprofilescan
+      with:
+        appId: tools.appId
+        envId: tools.envId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: request-profile-analysis
+      description: Request Profile Analysis
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-profile-scans.requestprofileanalysis
+      with:
+        appId: tools.appId
+        envId: tools.envId
+      outputParameters:
+      - type: object
+        mapping: $.

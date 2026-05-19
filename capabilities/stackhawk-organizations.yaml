@@ -1,0 +1,130 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Organizations
+  description: 'StackHawk API — Organizations. 2 operations. Lead operation: Get Audit History. Self-contained Naftiko capability
+    covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Organizations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-organizations
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Organizations business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-org-orgId-audit
+      path: /api/v1/org/{orgId}/audit
+      operations:
+      - name: getaudithistory
+        method: GET
+        description: Get Audit History
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: pageToken
+          in: query
+          type: string
+        - name: pageSize
+          in: query
+          type: integer
+    - name: api-v1-org-orgId-members
+      path: /api/v1/org/{orgId}/members
+      operations:
+      - name: listmembers
+        method: GET
+        description: List Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-organizations-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Organizations. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/org/{orgid}/audit
+      name: api-v1-org-orgid-audit
+      description: REST surface for api-v1-org-orgId-audit.
+      operations:
+      - method: GET
+        name: getaudithistory
+        description: Get Audit History
+        call: stackhawk-organizations.getaudithistory
+        with:
+          orgId: rest.orgId
+          pageToken: rest.pageToken
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/org/{orgid}/members
+      name: api-v1-org-orgid-members
+      description: REST surface for api-v1-org-orgId-members.
+      operations:
+      - method: GET
+        name: listmembers
+        description: List Members
+        call: stackhawk-organizations.listmembers
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Organizations. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-audit-history
+      description: Get Audit History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-organizations.getaudithistory
+      with:
+        orgId: tools.orgId
+        pageToken: tools.pageToken
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-members
+      description: List Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-organizations.listmembers
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Api Authentication
+  description: 'StackHawk API — Api Authentication. 2 operations. Lead operation: Login With API Key. Self-contained Naftiko
+    capability covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Api Authentication
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-api-authentication
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Api Authentication business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-auth-login
+      path: /api/v1/auth/login
+      operations:
+      - name: login
+        method: GET
+        description: Login With API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-ApiKey
+          in: header
+          type: string
+          description: StackHawk API key from Settings > API Keys
+          required: true
+    - name: api-v1-auth-refresh-token
+      path: /api/v1/auth/refresh-token
+      operations:
+      - name: refreshtoken
+        method: GET
+        description: Refresh Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-api-authentication-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Api Authentication. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/auth/login
+      name: api-v1-auth-login
+      description: REST surface for api-v1-auth-login.
+      operations:
+      - method: GET
+        name: login
+        description: Login With API Key
+        call: stackhawk-api-authentication.login
+        with:
+          X-ApiKey: rest.X-ApiKey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/auth/refresh-token
+      name: api-v1-auth-refresh-token
+      description: REST surface for api-v1-auth-refresh-token.
+      operations:
+      - method: GET
+        name: refreshtoken
+        description: Refresh Token
+        call: stackhawk-api-authentication.refreshtoken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-api-authentication-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Api Authentication. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: login-api-key
+      description: Login With API Key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-api-authentication.login
+      with:
+        X-ApiKey: tools.X-ApiKey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: refresh-token
+      description: Refresh Token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-api-authentication.refreshtoken
+      outputParameters:
+      - type: object
+        mapping: $.

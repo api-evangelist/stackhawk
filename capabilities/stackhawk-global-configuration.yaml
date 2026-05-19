@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Global Configuration
+  description: 'StackHawk API — Global Configuration. 1 operations. Lead operation: Get Global Configuration. Self-contained
+    Naftiko capability covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Global Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-global-configuration
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Global Configuration business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-global-configuration-configName
+      path: /api/v1/global-configuration/{configName}
+      operations:
+      - name: getglobalconfiguration
+        method: GET
+        description: Get Global Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configName
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-global-configuration-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Global Configuration. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/global-configuration/{configname}
+      name: api-v1-global-configuration-configname
+      description: REST surface for api-v1-global-configuration-configName.
+      operations:
+      - method: GET
+        name: getglobalconfiguration
+        description: Get Global Configuration
+        call: stackhawk-global-configuration.getglobalconfiguration
+        with:
+          configName: rest.configName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-global-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Global Configuration. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-global-configuration
+      description: Get Global Configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-global-configuration.getglobalconfiguration
+      with:
+        configName: tools.configName
+      outputParameters:
+      - type: object
+        mapping: $.

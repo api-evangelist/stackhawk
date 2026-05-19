@@ -1,0 +1,254 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Scan Policies
+  description: 'StackHawk API — Scan Policies. 5 operations. Lead operation: List Scan Policies. Self-contained Naftiko capability
+    covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Scan Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-scan-policies
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Scan Policies business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-org-orgId-policy
+      path: /api/v1/org/{orgId}/policy
+      operations:
+      - name: listscanpolicies
+        method: GET
+        description: List Scan Policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+      - name: createscanpolicy
+        method: POST
+        description: Create Scan Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v1-org-orgId-policy-policyId
+      path: /api/v1/org/{orgId}/policy/{policyId}
+      operations:
+      - name: getscanpolicy
+        method: GET
+        description: Get Scan Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+      - name: updatescanpolicy
+        method: POST
+        description: Update Scan Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletescanpolicy
+        method: DELETE
+        description: Delete Scan Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: policyId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-scan-policies-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Scan Policies. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/org/{orgid}/policy
+      name: api-v1-org-orgid-policy
+      description: REST surface for api-v1-org-orgId-policy.
+      operations:
+      - method: GET
+        name: listscanpolicies
+        description: List Scan Policies
+        call: stackhawk-scan-policies.listscanpolicies
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createscanpolicy
+        description: Create Scan Policy
+        call: stackhawk-scan-policies.createscanpolicy
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/org/{orgid}/policy/{policyid}
+      name: api-v1-org-orgid-policy-policyid
+      description: REST surface for api-v1-org-orgId-policy-policyId.
+      operations:
+      - method: GET
+        name: getscanpolicy
+        description: Get Scan Policy
+        call: stackhawk-scan-policies.getscanpolicy
+        with:
+          orgId: rest.orgId
+          policyId: rest.policyId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatescanpolicy
+        description: Update Scan Policy
+        call: stackhawk-scan-policies.updatescanpolicy
+        with:
+          orgId: rest.orgId
+          policyId: rest.policyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletescanpolicy
+        description: Delete Scan Policy
+        call: stackhawk-scan-policies.deletescanpolicy
+        with:
+          orgId: rest.orgId
+          policyId: rest.policyId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-scan-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Scan Policies. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-scan-policies
+      description: List Scan Policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-scan-policies.listscanpolicies
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-scan-policy
+      description: Create Scan Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-scan-policies.createscanpolicy
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-scan-policy
+      description: Get Scan Policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-scan-policies.getscanpolicy
+      with:
+        orgId: tools.orgId
+        policyId: tools.policyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-scan-policy
+      description: Update Scan Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-scan-policies.updatescanpolicy
+      with:
+        orgId: tools.orgId
+        policyId: tools.policyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-scan-policy
+      description: Delete Scan Policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: stackhawk-scan-policies.deletescanpolicy
+      with:
+        orgId: tools.orgId
+        policyId: tools.policyId
+      outputParameters:
+      - type: object
+        mapping: $.

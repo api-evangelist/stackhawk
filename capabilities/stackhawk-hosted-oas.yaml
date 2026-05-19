@@ -1,0 +1,168 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Hosted OAS
+  description: 'StackHawk API — Hosted OAS. 3 operations. Lead operation: Get Application OpenAPI Specs. Self-contained Naftiko
+    capability covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Hosted OAS
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-hosted-oas
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Hosted OAS business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-oas-appId-mapping
+      path: /api/v1/oas/{appId}/mapping
+      operations:
+      - name: getoasmapping
+        method: GET
+        description: Get Application OpenAPI Specs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+      - name: mapoasspec
+        method: POST
+        description: Map Application OpenAPI Specs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v1-oas-appId-upload
+      path: /api/v1/oas/{appId}/upload
+      operations:
+      - name: uploadopenapispec
+        method: POST
+        description: Upload OpenAPI Spec File
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-hosted-oas-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Hosted OAS. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/oas/{appid}/mapping
+      name: api-v1-oas-appid-mapping
+      description: REST surface for api-v1-oas-appId-mapping.
+      operations:
+      - method: GET
+        name: getoasmapping
+        description: Get Application OpenAPI Specs
+        call: stackhawk-hosted-oas.getoasmapping
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: mapoasspec
+        description: Map Application OpenAPI Specs
+        call: stackhawk-hosted-oas.mapoasspec
+        with:
+          appId: rest.appId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/oas/{appid}/upload
+      name: api-v1-oas-appid-upload
+      description: REST surface for api-v1-oas-appId-upload.
+      operations:
+      - method: POST
+        name: uploadopenapispec
+        description: Upload OpenAPI Spec File
+        call: stackhawk-hosted-oas.uploadopenapispec
+        with:
+          appId: rest.appId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-hosted-oas-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Hosted OAS. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-application-openapi-specs
+      description: Get Application OpenAPI Specs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-hosted-oas.getoasmapping
+      with:
+        appId: tools.appId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: map-application-openapi-specs
+      description: Map Application OpenAPI Specs
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-hosted-oas.mapoasspec
+      with:
+        appId: tools.appId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-openapi-spec-file
+      description: Upload OpenAPI Spec File
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-hosted-oas.uploadopenapispec
+      with:
+        appId: tools.appId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

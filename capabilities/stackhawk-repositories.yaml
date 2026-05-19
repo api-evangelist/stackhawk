@@ -1,0 +1,254 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Repositories
+  description: 'StackHawk API — Repositories. 5 operations. Lead operation: List Repositories. Self-contained Naftiko capability
+    covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Repositories
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-repositories
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Repositories business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-org-orgId-repository
+      path: /api/v1/org/{orgId}/repository
+      operations:
+      - name: listrepositories
+        method: GET
+        description: List Repositories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+      - name: createrepository
+        method: POST
+        description: Create Repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v1-org-orgId-repository-repoId
+      path: /api/v1/org/{orgId}/repository/{repoId}
+      operations:
+      - name: getrepository
+        method: GET
+        description: Get Repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: repoId
+          in: path
+          type: string
+          required: true
+      - name: updaterepository
+        method: POST
+        description: Update Repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: repoId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleterepository
+        method: DELETE
+        description: Delete Repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: repoId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-repositories-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Repositories. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/org/{orgid}/repository
+      name: api-v1-org-orgid-repository
+      description: REST surface for api-v1-org-orgId-repository.
+      operations:
+      - method: GET
+        name: listrepositories
+        description: List Repositories
+        call: stackhawk-repositories.listrepositories
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createrepository
+        description: Create Repository
+        call: stackhawk-repositories.createrepository
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/org/{orgid}/repository/{repoid}
+      name: api-v1-org-orgid-repository-repoid
+      description: REST surface for api-v1-org-orgId-repository-repoId.
+      operations:
+      - method: GET
+        name: getrepository
+        description: Get Repository
+        call: stackhawk-repositories.getrepository
+        with:
+          orgId: rest.orgId
+          repoId: rest.repoId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updaterepository
+        description: Update Repository
+        call: stackhawk-repositories.updaterepository
+        with:
+          orgId: rest.orgId
+          repoId: rest.repoId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleterepository
+        description: Delete Repository
+        call: stackhawk-repositories.deleterepository
+        with:
+          orgId: rest.orgId
+          repoId: rest.repoId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-repositories-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Repositories. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-repositories
+      description: List Repositories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-repositories.listrepositories
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-repository
+      description: Create Repository
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-repositories.createrepository
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-repository
+      description: Get Repository
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-repositories.getrepository
+      with:
+        orgId: tools.orgId
+        repoId: tools.repoId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-repository
+      description: Update Repository
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-repositories.updaterepository
+      with:
+        orgId: tools.orgId
+        repoId: tools.repoId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-repository
+      description: Delete Repository
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: stackhawk-repositories.deleterepository
+      with:
+        orgId: tools.orgId
+        repoId: tools.repoId
+      outputParameters:
+      - type: object
+        mapping: $.

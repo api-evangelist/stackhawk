@@ -1,0 +1,249 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Scan Configuration
+  description: 'StackHawk API — Scan Configuration. 5 operations. Lead operation: Get Application Config. Self-contained Naftiko
+    capability covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Scan Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-scan-configuration
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Scan Configuration business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-app-appId-config-configHash
+      path: /api/v1/app/{appId}/config/{configHash}
+      operations:
+      - name: getapplicationconfig
+        method: GET
+        description: Get Application Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: configHash
+          in: path
+          type: string
+          required: true
+    - name: api-v1-app-appId-scan-config
+      path: /api/v1/app/{appId}/scan-config
+      operations:
+      - name: getscanconfiguration
+        method: GET
+        description: Get Scan Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+      - name: updatescanconfiguration
+        method: POST
+        description: Update Scan Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v1-org-orgId-scan-config
+      path: /api/v1/org/{orgId}/scan-config
+      operations:
+      - name: listorgscanconfigurations
+        method: GET
+        description: List Organization Scan Configs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+      - name: createorgscanconfiguration
+        method: POST
+        description: Create Scan Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-scan-configuration-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Scan Configuration. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/app/{appid}/config/{confighash}
+      name: api-v1-app-appid-config-confighash
+      description: REST surface for api-v1-app-appId-config-configHash.
+      operations:
+      - method: GET
+        name: getapplicationconfig
+        description: Get Application Config
+        call: stackhawk-scan-configuration.getapplicationconfig
+        with:
+          appId: rest.appId
+          configHash: rest.configHash
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/app/{appid}/scan-config
+      name: api-v1-app-appid-scan-config
+      description: REST surface for api-v1-app-appId-scan-config.
+      operations:
+      - method: GET
+        name: getscanconfiguration
+        description: Get Scan Configuration
+        call: stackhawk-scan-configuration.getscanconfiguration
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatescanconfiguration
+        description: Update Scan Configuration
+        call: stackhawk-scan-configuration.updatescanconfiguration
+        with:
+          appId: rest.appId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/org/{orgid}/scan-config
+      name: api-v1-org-orgid-scan-config
+      description: REST surface for api-v1-org-orgId-scan-config.
+      operations:
+      - method: GET
+        name: listorgscanconfigurations
+        description: List Organization Scan Configs
+        call: stackhawk-scan-configuration.listorgscanconfigurations
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorgscanconfiguration
+        description: Create Scan Configuration
+        call: stackhawk-scan-configuration.createorgscanconfiguration
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-scan-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Scan Configuration. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-application-config
+      description: Get Application Config
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-scan-configuration.getapplicationconfig
+      with:
+        appId: tools.appId
+        configHash: tools.configHash
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-scan-configuration
+      description: Get Scan Configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-scan-configuration.getscanconfiguration
+      with:
+        appId: tools.appId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-scan-configuration
+      description: Update Scan Configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-scan-configuration.updatescanconfiguration
+      with:
+        appId: tools.appId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-organization-scan-configs
+      description: List Organization Scan Configs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-scan-configuration.listorgscanconfigurations
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-scan-configuration
+      description: Create Scan Configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-scan-configuration.createorgscanconfiguration
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

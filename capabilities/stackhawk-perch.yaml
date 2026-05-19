@@ -1,0 +1,121 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — Perch
+  description: 'StackHawk API — Perch. 2 operations. Lead operation: Request Scan Via Perch. Self-contained Naftiko capability
+    covering one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - Perch
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-perch
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — Perch business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-perch-scan
+      path: /api/v1/perch/scan
+      operations:
+      - name: requestperchscan
+        method: POST
+        description: Request Scan Via Perch
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v1-perch-status-scanId
+      path: /api/v1/perch/status/{scanId}
+      operations:
+      - name: getperchscanstatus
+        method: GET
+        description: Get Perch Scan Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: scanId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-perch-rest
+    port: 8080
+    description: REST adapter for StackHawk API — Perch. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/perch/scan
+      name: api-v1-perch-scan
+      description: REST surface for api-v1-perch-scan.
+      operations:
+      - method: POST
+        name: requestperchscan
+        description: Request Scan Via Perch
+        call: stackhawk-perch.requestperchscan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/perch/status/{scanid}
+      name: api-v1-perch-status-scanid
+      description: REST surface for api-v1-perch-status-scanId.
+      operations:
+      - method: GET
+        name: getperchscanstatus
+        description: Get Perch Scan Status
+        call: stackhawk-perch.getperchscanstatus
+        with:
+          scanId: rest.scanId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-perch-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — Perch. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: request-scan-perch
+      description: Request Scan Via Perch
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-perch.requestperchscan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-perch-scan-status
+      description: Get Perch Scan Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-perch.getperchscanstatus
+      with:
+        scanId: tools.scanId
+      outputParameters:
+      - type: object
+        mapping: $.

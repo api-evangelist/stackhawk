@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StackHawk API — User
+  description: 'StackHawk API — User. 2 operations. Lead operation: Get Current User. Self-contained Naftiko capability covering
+    one Stackhawk business surface.'
+  tags:
+  - Stackhawk
+  - User
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKHAWK_API_KEY: STACKHAWK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stackhawk-user
+    baseUri: https://api.stackhawk.com
+    description: StackHawk API — User business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-user
+      path: /api/v1/user
+      operations:
+      - name: getuser
+        method: GET
+        description: Get Current User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateuser
+        method: POST
+        description: Update User Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.STACKHAWK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stackhawk-user-rest
+    port: 8080
+    description: REST adapter for StackHawk API — User. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/api/v1/user
+      name: api-v1-user
+      description: REST surface for api-v1-user.
+      operations:
+      - method: GET
+        name: getuser
+        description: Get Current User
+        call: stackhawk-user.getuser
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateuser
+        description: Update User Profile
+        call: stackhawk-user.updateuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stackhawk-user-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StackHawk API — User. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-current-user
+      description: Get Current User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stackhawk-user.getuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user-profile
+      description: Update User Profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stackhawk-user.updateuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
