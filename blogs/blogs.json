@@ -2,13 +2,17 @@
   "repo": "stackhawk",
   "feeds": [
     {
-      "source": "https://www.stackhawk.com/blog/",
-      "feed_url": "https://www.stackhawk.com/blog/feed/",
-      "title": "StackHawk Application Security Blog: Building Secure Software",
+      "source": "https://www.stackhawk.com/blog/feed/",
+      "error": "URLError"
+    },
+    {
+      "source": "https://docs.stackhawk.com/",
+      "feed_url": "https://docs.stackhawk.com/",
+      "title": "",
       "saved": 0,
-      "last_error": "req_err:SSLError"
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:20:35Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 10
 }
