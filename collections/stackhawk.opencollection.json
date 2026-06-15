@@ -1,0 +1,1336 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "StackHawk API",
+    "version": "0.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Api Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login With API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/auth/login",
+            "headers": [
+              {
+                "name": "X-ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Authenticate using an API key to obtain a JWT access token. The API key is passed in the X-ApiKey header. Tokens expire after 30 minutes."
+        },
+        {
+          "info": {
+            "name": "Refresh Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/auth/refresh-token"
+          },
+          "docs": "Refresh an existing JWT access token before it expires."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/user"
+          },
+          "docs": "Retrieve information about the currently authenticated user."
+        },
+        {
+          "info": {
+            "name": "Update User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update profile information for the authenticated user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/app",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new application in the specified organization."
+        },
+        {
+          "info": {
+            "name": "List Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:orgId/list",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all applications for an organization."
+        },
+        {
+          "info": {
+            "name": "List Applications V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v2/org/:orgId/apps",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Paginated list of applications for an organization (v2)."
+        },
+        {
+          "info": {
+            "name": "Get Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific application."
+        },
+        {
+          "info": {
+            "name": "Update Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update application settings."
+        },
+        {
+          "info": {
+            "name": "Delete Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a StackHawk application."
+        },
+        {
+          "info": {
+            "name": "Create Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new environment for an application."
+        },
+        {
+          "info": {
+            "name": "List Environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/list",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all environments for an application."
+        },
+        {
+          "info": {
+            "name": "List Environments V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v2/org/:orgId/envs",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Paginated list of environments for an organization (v2)."
+        },
+        {
+          "info": {
+            "name": "Update Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update environment configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an application environment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scan Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Application Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/config/:configHash",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "configHash",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific application configuration by hash."
+        },
+        {
+          "info": {
+            "name": "Get Scan Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/scan-config",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the scan configuration for an application."
+        },
+        {
+          "info": {
+            "name": "Update Scan Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/scan-config",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the scan configuration for an application."
+        },
+        {
+          "info": {
+            "name": "List Organization Scan Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/scan-config",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all scan configurations for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Scan Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/scan-config",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new scan configuration for an organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scan Results",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Scans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/scan",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all scans for an application environment."
+        },
+        {
+          "info": {
+            "name": "Get Scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/scan/:scanId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scanId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific scan."
+        },
+        {
+          "info": {
+            "name": "Delete Scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/scan/:scanId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scanId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a scan and its associated findings."
+        },
+        {
+          "info": {
+            "name": "List Findings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/scan/:scanId/finding",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scanId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all security findings from a specific scan."
+        },
+        {
+          "info": {
+            "name": "Get Finding",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/scan/:scanId/finding/:findingId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scanId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "findingId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific security finding."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Scan Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/scan/:scanId/report",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scanId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a generated scan report."
+        },
+        {
+          "info": {
+            "name": "Request Report Generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/scan/:scanId/report",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scanId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Request generation of a scan report."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Profile Scans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Profile Scan Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/profile",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get profile scan results for an application environment."
+        },
+        {
+          "info": {
+            "name": "Request Profile Analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId/profile",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Request a new profile analysis for an application environment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Hosted OAS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload OpenAPI Spec File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/oas/:appId/upload",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload an OpenAPI specification file for an application."
+        },
+        {
+          "info": {
+            "name": "Get Application OpenAPI Specs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/oas/:appId/mapping",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the OpenAPI spec mapping for an application."
+        },
+        {
+          "info": {
+            "name": "Map Application OpenAPI Specs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/oas/:appId/mapping",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Map an OpenAPI spec to an application."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Global Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Global Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/global-configuration/:configName",
+            "params": [
+              {
+                "name": "configName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an organization-level global configuration by name."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/repository",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all repositories for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/repository",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new repository with an organization."
+        },
+        {
+          "info": {
+            "name": "Get Repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/repository/:repoId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repoId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific repository."
+        },
+        {
+          "info": {
+            "name": "Update Repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/repository/:repoId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repoId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update repository configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/repository/:repoId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repoId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a repository from an organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organization Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/team",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new team in an organization."
+        },
+        {
+          "info": {
+            "name": "Find Teams for Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/teams",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all teams in an organization."
+        },
+        {
+          "info": {
+            "name": "Get Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/team/:teamId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific team."
+        },
+        {
+          "info": {
+            "name": "Update Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/team/:teamId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update team information."
+        },
+        {
+          "info": {
+            "name": "Delete Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/team/:teamId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a team from an organization."
+        },
+        {
+          "info": {
+            "name": "Update Team Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/team/:teamId/application",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the applications assigned to a team."
+        },
+        {
+          "info": {
+            "name": "Find Teams for User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/user/:userId/teams",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve all teams a specific user belongs to."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/members",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all members of an organization."
+        },
+        {
+          "info": {
+            "name": "Get Audit History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/audit",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve audit history for an organization. Enterprise feature."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scan Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Scan Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/policy",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all scan policies for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Scan Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/policy",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new scan policy for an organization."
+        },
+        {
+          "info": {
+            "name": "Get Scan Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/policy/:policyId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific scan policy."
+        },
+        {
+          "info": {
+            "name": "Update Scan Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/policy/:policyId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing scan policy."
+        },
+        {
+          "info": {
+            "name": "Delete Scan Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/policy/:policyId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a scan policy."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Perch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Scan Via Perch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/perch/scan",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trigger a scan via the Perch scan command interface."
+        },
+        {
+          "info": {
+            "name": "Get Perch Scan Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/perch/status/:scanId",
+            "params": [
+              {
+                "name": "scanId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the status of a Perch-initiated scan."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
