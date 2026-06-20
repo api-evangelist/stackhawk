@@ -6,7 +6,7 @@ description: >-
   with deep OpenAPI spec integration, CI/CD pipeline automation, AI-powered spec generation, and an AppSec Intelligence
   platform for program-level visibility across the software development lifecycle.
 url: https://raw.githubusercontent.com/api-evangelist/stackhawk/refs/heads/main/apis.yml
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - API Security
   - Application Security
