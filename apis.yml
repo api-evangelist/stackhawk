@@ -68,7 +68,7 @@ common:
   - type: Login
     url: https://app.stackhawk.com/
     name: StackHawk App
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.stackhawk.com/llms.txt
 maintainers:
   - FN: Kin Lane
