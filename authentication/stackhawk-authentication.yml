@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/stackhawk-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: JWT token obtained via /api/v1/auth/login
+  sources:
+  - openapi/stackhawk-openapi.yml

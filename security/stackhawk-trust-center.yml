@@ -1,0 +1,12 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://trust.stackhawk.com/
+url: https://trust.stackhawk.com/
+certifications:
+- SOC 2
+evidence:
+- source: https://trust.stackhawk.com/
+  keywords:
+  - soc 2
+  - trust center

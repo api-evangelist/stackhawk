@@ -40,6 +40,14 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/stackhawk/refs/heads/main/openapi/stackhawk-openapi.yml
 common:
+  - type: TrustCenter
+    url: security/stackhawk-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/stackhawk-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/stackhawk-domain-security.yml
+  - type: Authentication
+    url: authentication/stackhawk-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/stackhawk
   - type: LinkedIn
