@@ -1,0 +1,183 @@
+openapi: 3.0.1
+info:
+  title: StackHawk Api Authentication Scan Policies API
+  description: The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.
+  version: 0.0.1
+  contact:
+    url: https://www.stackhawk.com/
+    email: support@stackhawk.com
+  termsOfService: https://www.stackhawk.com/terms/
+servers:
+- url: https://api.stackhawk.com
+  description: StackHawk API
+security:
+- BearerAuth: []
+tags:
+- name: Scan Policies
+  description: Security policy management
+paths:
+  /api/v1/org/{orgId}/policy:
+    get:
+      operationId: listScanPolicies
+      summary: List Scan Policies
+      description: List all scan policies for an organization.
+      tags:
+      - Scan Policies
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of scan policies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScanPolicy'
+    post:
+      operationId: createScanPolicy
+      summary: Create Scan Policy
+      description: Create a new scan policy for an organization.
+      tags:
+      - Scan Policies
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewScanPolicyRequest'
+      responses:
+        '200':
+          description: Created scan policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanPolicy'
+  /api/v1/org/{orgId}/policy/{policyId}:
+    get:
+      operationId: getScanPolicy
+      summary: Get Scan Policy
+      description: Retrieve a specific scan policy.
+      tags:
+      - Scan Policies
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: policyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scan policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanPolicy'
+    post:
+      operationId: updateScanPolicy
+      summary: Update Scan Policy
+      description: Update an existing scan policy.
+      tags:
+      - Scan Policies
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: policyId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScanPolicyUpdateRequest'
+      responses:
+        '200':
+          description: Updated scan policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanPolicy'
+    delete:
+      operationId: deleteScanPolicy
+      summary: Delete Scan Policy
+      description: Delete a scan policy.
+      tags:
+      - Scan Policies
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: policyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Policy deleted
+components:
+  schemas:
+    ScanPolicy:
+      type: object
+      properties:
+        policyId:
+          type: string
+        organizationId:
+          type: string
+        name:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    ScanPolicyUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
+    NewScanPolicyRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained via /api/v1/auth/login

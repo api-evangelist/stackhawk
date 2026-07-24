@@ -1,0 +1,177 @@
+openapi: 3.0.1
+info:
+  title: StackHawk Api Authentication Repositories API
+  description: The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.
+  version: 0.0.1
+  contact:
+    url: https://www.stackhawk.com/
+    email: support@stackhawk.com
+  termsOfService: https://www.stackhawk.com/terms/
+servers:
+- url: https://api.stackhawk.com
+  description: StackHawk API
+security:
+- BearerAuth: []
+tags:
+- name: Repositories
+  description: Repository management
+paths:
+  /api/v1/org/{orgId}/repository:
+    get:
+      operationId: listRepositories
+      summary: List Repositories
+      description: List all repositories for an organization.
+      tags:
+      - Repositories
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of repositories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repositories:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Repository'
+    post:
+      operationId: createRepository
+      summary: Create Repository
+      description: Register a new repository with an organization.
+      tags:
+      - Repositories
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewRepositoryRequest'
+      responses:
+        '200':
+          description: Created repository
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repository'
+  /api/v1/org/{orgId}/repository/{repoId}:
+    get:
+      operationId: getRepository
+      summary: Get Repository
+      description: Retrieve details for a specific repository.
+      tags:
+      - Repositories
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Repository details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repository'
+    post:
+      operationId: updateRepository
+      summary: Update Repository
+      description: Update repository configuration.
+      tags:
+      - Repositories
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepositoryUpdateRequest'
+      responses:
+        '200':
+          description: Updated repository
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repository'
+    delete:
+      operationId: deleteRepository
+      summary: Delete Repository
+      description: Remove a repository from an organization.
+      tags:
+      - Repositories
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repoId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Repository deleted
+components:
+  schemas:
+    RepositoryUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+    NewRepositoryRequest:
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+    Repository:
+      type: object
+      properties:
+        repositoryId:
+          type: string
+        organizationId:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained via /api/v1/auth/login

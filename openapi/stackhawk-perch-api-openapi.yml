@@ -1,0 +1,96 @@
+openapi: 3.0.1
+info:
+  title: StackHawk Api Authentication Perch API
+  description: The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.
+  version: 0.0.1
+  contact:
+    url: https://www.stackhawk.com/
+    email: support@stackhawk.com
+  termsOfService: https://www.stackhawk.com/terms/
+servers:
+- url: https://api.stackhawk.com
+  description: StackHawk API
+security:
+- BearerAuth: []
+tags:
+- name: Perch
+  description: Scan command control
+paths:
+  /api/v1/perch/scan:
+    post:
+      operationId: requestPerchScan
+      summary: Request Scan Via Perch
+      description: Trigger a scan via the Perch scan command interface.
+      tags:
+      - Perch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerchScanRequest'
+      responses:
+        '200':
+          description: Scan initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerchScanResponse'
+  /api/v1/perch/status/{scanId}:
+    get:
+      operationId: getPerchScanStatus
+      summary: Get Perch Scan Status
+      description: Retrieve the status of a Perch-initiated scan.
+      tags:
+      - Perch
+      parameters:
+      - name: scanId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scan status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerchScanStatus'
+components:
+  schemas:
+    PerchScanRequest:
+      type: object
+      properties:
+        appId:
+          type: string
+        envId:
+          type: string
+        configOptions:
+          type: object
+          additionalProperties: true
+    PerchScanStatus:
+      type: object
+      properties:
+        scanId:
+          type: string
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+        progress:
+          type: integer
+    PerchScanResponse:
+      type: object
+      properties:
+        scanId:
+          type: string
+        status:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained via /api/v1/auth/login

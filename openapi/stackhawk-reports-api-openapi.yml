@@ -1,0 +1,92 @@
+openapi: 3.0.1
+info:
+  title: StackHawk Api Authentication Reports API
+  description: The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.
+  version: 0.0.1
+  contact:
+    url: https://www.stackhawk.com/
+    email: support@stackhawk.com
+  termsOfService: https://www.stackhawk.com/terms/
+servers:
+- url: https://api.stackhawk.com
+  description: StackHawk API
+security:
+- BearerAuth: []
+tags:
+- name: Reports
+  description: Scan report generation
+paths:
+  /api/v1/app/{appId}/env/{envId}/scan/{scanId}/report:
+    get:
+      operationId: getScanReport
+      summary: Get Scan Report
+      description: Retrieve a generated scan report.
+      tags:
+      - Reports
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: envId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scanId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scan report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanReport'
+    post:
+      operationId: requestReport
+      summary: Request Report Generation
+      description: Request generation of a scan report.
+      tags:
+      - Reports
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: envId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scanId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Report generation requested
+components:
+  schemas:
+    ScanReport:
+      type: object
+      properties:
+        reportId:
+          type: string
+        scanId:
+          type: string
+        status:
+          type: string
+        url:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained via /api/v1/auth/login
