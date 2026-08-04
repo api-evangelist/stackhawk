@@ -1,0 +1,337 @@
+{
+  "info": {
+    "_postman_id": "564865fa-17a5-40eb-9117-f41b2751ab13",
+    "name": "StackHawk Api Authentication Reports API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:58.000Z",
+    "updatedAt": "2026-07-28T03:04:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-564865fa-17a5-40eb-9117-f41b2751ab13"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "app",
+              "item": [
+                {
+                  "name": "{appId}",
+                  "item": [
+                    {
+                      "name": "env",
+                      "item": [
+                        {
+                          "name": "{envId}",
+                          "item": [
+                            {
+                              "name": "scan",
+                              "item": [
+                                {
+                                  "name": "{scanId}",
+                                  "item": [
+                                    {
+                                      "name": "report",
+                                      "item": [
+                                        {
+                                          "name": "Get Scan Report",
+                                          "id": "74a6ff59-9710-41f4-abfc-3af6bf02aac4",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId/report",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "app",
+                                                ":appId",
+                                                "env",
+                                                ":envId",
+                                                "scan",
+                                                ":scanId",
+                                                "report"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "d00a4fc7-c553-4602-92fd-3964fed693e2",
+                                                  "key": "appId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "e61b5509-45f0-425e-88cf-aa9f2f3190e7",
+                                                  "key": "envId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "5da048b8-b905-4de8-8719-beaa25349755",
+                                                  "key": "scanId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            },
+                                            "description": "Retrieve a generated scan report."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "5c762d44-83f8-417a-90a2-59c13806073e",
+                                              "name": "Scan report",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: bearer",
+                                                    "key": "Authorization",
+                                                    "value": "Bearer <token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId/report",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "api",
+                                                    "v1",
+                                                    "app",
+                                                    ":appId",
+                                                    "env",
+                                                    ":envId",
+                                                    "scan",
+                                                    ":scanId",
+                                                    "report"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "appId"
+                                                    },
+                                                    {
+                                                      "key": "envId"
+                                                    },
+                                                    {
+                                                      "key": "scanId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"reportId\": \"<string>\",\n  \"scanId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                                              "createdAt": "2026-07-28T03:04:59.000Z",
+                                              "updatedAt": "2026-07-28T03:04:59.000Z",
+                                              "uid": "35240-5c762d44-83f8-417a-90a2-59c13806073e"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T03:04:59.000Z",
+                                          "updatedAt": "2026-07-28T03:04:59.000Z",
+                                          "uid": "35240-74a6ff59-9710-41f4-abfc-3af6bf02aac4"
+                                        },
+                                        {
+                                          "name": "Request Report Generation",
+                                          "id": "265f0938-ea91-4a14-9f3b-7a8d9797e61a",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "POST",
+                                            "header": [],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId/report",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "app",
+                                                ":appId",
+                                                "env",
+                                                ":envId",
+                                                "scan",
+                                                ":scanId",
+                                                "report"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "ef765eb0-21c9-4053-92d0-874f8a349128",
+                                                  "key": "appId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "ac8fb8a4-dfb1-4762-90b4-452c5a47709a",
+                                                  "key": "envId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "a72505ff-0371-4774-a17e-03220fbece52",
+                                                  "key": "scanId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            },
+                                            "description": "Request generation of a scan report."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "61f2d009-8db5-4af8-bab4-a7e08e3cbdb9",
+                                              "name": "Report generation requested",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: bearer",
+                                                    "key": "Authorization",
+                                                    "value": "Bearer <token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId/report",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "api",
+                                                    "v1",
+                                                    "app",
+                                                    ":appId",
+                                                    "env",
+                                                    ":envId",
+                                                    "scan",
+                                                    ":scanId",
+                                                    "report"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "appId"
+                                                    },
+                                                    {
+                                                      "key": "envId"
+                                                    },
+                                                    {
+                                                      "key": "scanId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Accepted",
+                                              "code": 202,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-07-28T03:04:59.000Z",
+                                              "updatedAt": "2026-07-28T03:04:59.000Z",
+                                              "uid": "35240-61f2d009-8db5-4af8-bab4-a7e08e3cbdb9"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T03:04:59.000Z",
+                                          "updatedAt": "2026-07-28T03:04:59.000Z",
+                                          "uid": "35240-265f0938-ea91-4a14-9f3b-7a8d9797e61a"
+                                        }
+                                      ],
+                                      "id": "890db989-690c-42cd-b16f-99a991d466bc",
+                                      "createdAt": "2026-07-28T03:04:59.000Z",
+                                      "updatedAt": "2026-07-28T03:04:59.000Z",
+                                      "uid": "35240-890db989-690c-42cd-b16f-99a991d466bc"
+                                    }
+                                  ],
+                                  "id": "8a1b4617-0f0a-447f-9e57-f3d1904fa7fc",
+                                  "createdAt": "2026-07-28T03:04:59.000Z",
+                                  "updatedAt": "2026-07-28T03:04:59.000Z",
+                                  "uid": "35240-8a1b4617-0f0a-447f-9e57-f3d1904fa7fc"
+                                }
+                              ],
+                              "id": "5ed5ad35-54ba-49d2-887e-0c9a6f06f7f7",
+                              "createdAt": "2026-07-28T03:04:59.000Z",
+                              "updatedAt": "2026-07-28T03:04:59.000Z",
+                              "uid": "35240-5ed5ad35-54ba-49d2-887e-0c9a6f06f7f7"
+                            }
+                          ],
+                          "id": "440ba1ee-cc6d-4fd9-87e6-c9c1097fe90d",
+                          "createdAt": "2026-07-28T03:04:59.000Z",
+                          "updatedAt": "2026-07-28T03:04:59.000Z",
+                          "uid": "35240-440ba1ee-cc6d-4fd9-87e6-c9c1097fe90d"
+                        }
+                      ],
+                      "id": "574f0a5a-084e-4485-9f62-41d1ed105f90",
+                      "createdAt": "2026-07-28T03:04:59.000Z",
+                      "updatedAt": "2026-07-28T03:04:59.000Z",
+                      "uid": "35240-574f0a5a-084e-4485-9f62-41d1ed105f90"
+                    }
+                  ],
+                  "id": "3ea08415-8749-4cc0-8000-3c10e8f4feb8",
+                  "createdAt": "2026-07-28T03:04:59.000Z",
+                  "updatedAt": "2026-07-28T03:04:59.000Z",
+                  "uid": "35240-3ea08415-8749-4cc0-8000-3c10e8f4feb8"
+                }
+              ],
+              "id": "f03026b6-ba35-41f4-95e4-2e55bac5d7ab",
+              "createdAt": "2026-07-28T03:04:59.000Z",
+              "updatedAt": "2026-07-28T03:04:59.000Z",
+              "uid": "35240-f03026b6-ba35-41f4-95e4-2e55bac5d7ab"
+            }
+          ],
+          "id": "94dfd7e4-7ceb-4de6-b86c-7a55b62b3fb9",
+          "createdAt": "2026-07-28T03:04:59.000Z",
+          "updatedAt": "2026-07-28T03:04:59.000Z",
+          "uid": "35240-94dfd7e4-7ceb-4de6-b86c-7a55b62b3fb9"
+        }
+      ],
+      "id": "ef01d500-1bf8-4f5c-be11-585f59e110aa",
+      "createdAt": "2026-07-28T03:04:59.000Z",
+      "updatedAt": "2026-07-28T03:04:59.000Z",
+      "uid": "35240-ef01d500-1bf8-4f5c-be11-585f59e110aa"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+{
+  "info": {
+    "_postman_id": "1573e1ef-86ef-49d8-8b60-b922954d013b",
+    "name": "StackHawk Api Authentication Scan Configuration API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:05:00.000Z",
+    "updatedAt": "2026-07-28T03:05:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1573e1ef-86ef-49d8-8b60-b922954d013b"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "app",
+              "item": [
+                {
+                  "name": "{appId}",
+                  "item": [
+                    {
+                      "name": "config",
+                      "item": [
+                        {
+                          "name": "{configHash}",
+                          "item": [
+                            {
+                              "name": "Get Application Config",
+                              "id": "71915dd1-0e31-462b-bb3e-5e1e076afd0e",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/app/:appId/config/:configHash",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "app",
+                                    ":appId",
+                                    "config",
+                                    ":configHash"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "a61eac49-9394-46b4-abd1-dce8eeda5b1f",
+                                      "key": "appId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "d6cd3223-4833-4611-ad00-dae82b335575",
+                                      "key": "configHash",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve a specific application configuration by hash."
+                              },
+                              "response": [
+                                {
+                                  "id": "86668a05-0af7-4fd1-974b-427be7456c8a",
+                                  "name": "Application configuration",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/app/:appId/config/:configHash",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "app",
+                                        ":appId",
+                                        "config",
+                                        ":configHash"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "appId"
+                                        },
+                                        {
+                                          "key": "configHash"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"configHash\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"configData\": {\n    \"ea_c\": 69158349\n  }\n}",
+                                  "createdAt": "2026-07-28T03:05:01.000Z",
+                                  "updatedAt": "2026-07-28T03:05:01.000Z",
+                                  "uid": "35240-86668a05-0af7-4fd1-974b-427be7456c8a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:05:01.000Z",
+                              "updatedAt": "2026-07-28T03:05:01.000Z",
+                              "uid": "35240-71915dd1-0e31-462b-bb3e-5e1e076afd0e"
+                            }
+                          ],
+                          "id": "2fb19844-6377-4fba-bf03-b16599a5ff24",
+                          "createdAt": "2026-07-28T03:05:01.000Z",
+                          "updatedAt": "2026-07-28T03:05:01.000Z",
+                          "uid": "35240-2fb19844-6377-4fba-bf03-b16599a5ff24"
+                        }
+                      ],
+                      "id": "ae770cb3-9489-4dd7-a92d-a29280a8a237",
+                      "createdAt": "2026-07-28T03:05:01.000Z",
+                      "updatedAt": "2026-07-28T03:05:01.000Z",
+                      "uid": "35240-ae770cb3-9489-4dd7-a92d-a29280a8a237"
+                    },
+                    {
+                      "name": "scan-config",
+                      "item": [
+                        {
+                          "name": "Get Scan Configuration",
+                          "id": "f29255c0-e619-4007-a9bb-ca0db6c5c891",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/app/:appId/scan-config",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "app",
+                                ":appId",
+                                "scan-config"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7eae307f-41e8-4696-9536-b39a37202ae2",
+                                  "key": "appId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Get the scan configuration for an application."
+                          },
+                          "response": [
+                            {
+                              "id": "1a4375e9-8cce-4f23-b367-d5007803040d",
+                              "name": "Scan configuration",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/app/:appId/scan-config",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "app",
+                                    ":appId",
+                                    "scan-config"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "appId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"configHash\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"configData\": {\n    \"ea_c\": 69158349\n  }\n}",
+                              "createdAt": "2026-07-28T03:05:01.000Z",
+                              "updatedAt": "2026-07-28T03:05:01.000Z",
+                              "uid": "35240-1a4375e9-8cce-4f23-b367-d5007803040d"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:05:01.000Z",
+                          "updatedAt": "2026-07-28T03:05:01.000Z",
+                          "uid": "35240-f29255c0-e619-4007-a9bb-ca0db6c5c891"
+                        },
+                        {
+                          "name": "Update Scan Configuration",
+                          "id": "5e4a9497-8744-4408-b1f1-e186712a2481",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ex0d8\": false\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/app/:appId/scan-config",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "app",
+                                ":appId",
+                                "scan-config"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f7b8aecc-251a-4ce1-b742-ce374d013ec4",
+                                  "key": "appId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Update the scan configuration for an application."
+                          },
+                          "response": [
+                            {
+                              "id": "451e861b-8b24-4451-b0a9-fde125f5b8ac",
+                              "name": "Updated scan configuration",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"ex0d8\": false\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/app/:appId/scan-config",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "app",
+                                    ":appId",
+                                    "scan-config"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "appId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"configHash\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"configData\": {\n    \"ea_c\": 69158349\n  }\n}",
+                              "createdAt": "2026-07-28T03:05:01.000Z",
+                              "updatedAt": "2026-07-28T03:05:01.000Z",
+                              "uid": "35240-451e861b-8b24-4451-b0a9-fde125f5b8ac"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:05:01.000Z",
+                          "updatedAt": "2026-07-28T03:05:01.000Z",
+                          "uid": "35240-5e4a9497-8744-4408-b1f1-e186712a2481"
+                        }
+                      ],
+                      "id": "a350b01c-558c-4c9f-851d-5175958280c9",
+                      "createdAt": "2026-07-28T03:05:01.000Z",
+                      "updatedAt": "2026-07-28T03:05:01.000Z",
+                      "uid": "35240-a350b01c-558c-4c9f-851d-5175958280c9"
+                    }
+                  ],
+                  "id": "82b35db1-52bb-473f-b517-c86ac168dbfc",
+                  "createdAt": "2026-07-28T03:05:01.000Z",
+                  "updatedAt": "2026-07-28T03:05:01.000Z",
+                  "uid": "35240-82b35db1-52bb-473f-b517-c86ac168dbfc"
+                }
+              ],
+              "id": "2c77d962-39a3-4323-af55-45b47feca1ec",
+              "createdAt": "2026-07-28T03:05:01.000Z",
+              "updatedAt": "2026-07-28T03:05:01.000Z",
+              "uid": "35240-2c77d962-39a3-4323-af55-45b47feca1ec"
+            },
+            {
+              "name": "org",
+              "item": [
+                {
+                  "name": "{orgId}",
+                  "item": [
+                    {
+                      "name": "scan-config",
+                      "item": [
+                        {
+                          "name": "List Organization Scan Configs",
+                          "id": "b06bfd68-a5d3-4552-9610-03e595820f8e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/scan-config",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "scan-config"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3d5c7111-1025-4314-8784-267322eff50d",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "List all scan configurations for an organization."
+                          },
+                          "response": [
+                            {
+                              "id": "973549d8-8e5a-454f-b8e0-ad3978715a26",
+                              "name": "List of scan configurations",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/scan-config",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "scan-config"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"scanConfigurations\": [\n    {\n      \"configHash\": \"<string>\",\n      \"appId\": \"<string>\",\n      \"configData\": {\n        \"nostrud_df\": false,\n        \"anim_c37\": \"consequat proident sed minim\"\n      }\n    },\n    {\n      \"configHash\": \"<string>\",\n      \"appId\": \"<string>\",\n      \"configData\": {\n        \"labore_a_b\": -71392475,\n        \"enim_7\": false,\n        \"quisa_9\": -80301630.67268723,\n        \"elit_c_\": \"occaecat aute\"\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:05:01.000Z",
+                              "updatedAt": "2026-07-28T03:05:01.000Z",
+                              "uid": "35240-973549d8-8e5a-454f-b8e0-ad3978715a26"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:05:01.000Z",
+                          "updatedAt": "2026-07-28T03:05:01.000Z",
+                          "uid": "35240-b06bfd68-a5d3-4552-9610-03e595820f8e"
+                        },
+                        {
+                          "name": "Create Scan Configuration",
+                          "id": "90473fb6-1d51-4fcb-9c5a-d52b6be75f9a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ex0d8\": false\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/scan-config",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "scan-config"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bd1a1daf-34a8-4216-a583-06aa3dabc661",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Create a new scan configuration for an organization."
+                          },
+                          "response": [
+                            {
+                              "id": "f459684b-ba6c-4eb2-abaf-17d6b85edc04",
+                              "name": "Created scan configuration",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"ex0d8\": false\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/scan-config",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "scan-config"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"configHash\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"configData\": {\n    \"ea_c\": 69158349\n  }\n}",
+                              "createdAt": "2026-07-28T03:05:01.000Z",
+                              "updatedAt": "2026-07-28T03:05:01.000Z",
+                              "uid": "35240-f459684b-ba6c-4eb2-abaf-17d6b85edc04"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:05:01.000Z",
+                          "updatedAt": "2026-07-28T03:05:01.000Z",
+                          "uid": "35240-90473fb6-1d51-4fcb-9c5a-d52b6be75f9a"
+                        }
+                      ],
+                      "id": "6fbd321d-755f-4e09-8d3a-e6c85807fd78",
+                      "createdAt": "2026-07-28T03:05:01.000Z",
+                      "updatedAt": "2026-07-28T03:05:01.000Z",
+                      "uid": "35240-6fbd321d-755f-4e09-8d3a-e6c85807fd78"
+                    }
+                  ],
+                  "id": "04bf68aa-02dc-4478-927d-2342f3330b41",
+                  "createdAt": "2026-07-28T03:05:01.000Z",
+                  "updatedAt": "2026-07-28T03:05:01.000Z",
+                  "uid": "35240-04bf68aa-02dc-4478-927d-2342f3330b41"
+                }
+              ],
+              "id": "9d85cf6e-c670-4013-8fd8-10ce23da32ce",
+              "createdAt": "2026-07-28T03:05:01.000Z",
+              "updatedAt": "2026-07-28T03:05:01.000Z",
+              "uid": "35240-9d85cf6e-c670-4013-8fd8-10ce23da32ce"
+            }
+          ],
+          "id": "6146db59-db87-44e0-8962-369923aaea49",
+          "createdAt": "2026-07-28T03:05:01.000Z",
+          "updatedAt": "2026-07-28T03:05:01.000Z",
+          "uid": "35240-6146db59-db87-44e0-8962-369923aaea49"
+        }
+      ],
+      "id": "edc54cd9-02d9-48bc-aa6b-0b1c2d1437ea",
+      "createdAt": "2026-07-28T03:05:01.000Z",
+      "updatedAt": "2026-07-28T03:05:01.000Z",
+      "uid": "35240-edc54cd9-02d9-48bc-aa6b-0b1c2d1437ea"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

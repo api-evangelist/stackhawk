@@ -1,0 +1,40 @@
+{
+  "provider": "stackhawk",
+  "sources": [
+    "stackhawk-api-authentication-api-openapi.yml",
+    "stackhawk-applications-api-openapi.yml",
+    "stackhawk-global-configuration-api-openapi.yml",
+    "stackhawk-hosted-oas-api-openapi.yml",
+    "stackhawk-organization-teams-api-openapi.yml",
+    "stackhawk-organizations-api-openapi.yml",
+    "stackhawk-perch-api-openapi.yml",
+    "stackhawk-profile-scans-api-openapi.yml",
+    "stackhawk-reports-api-openapi.yml",
+    "stackhawk-repositories-api-openapi.yml",
+    "stackhawk-scan-configuration-api-openapi.yml",
+    "stackhawk-scan-policies-api-openapi.yml",
+    "stackhawk-scan-results-api-openapi.yml",
+    "stackhawk-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "stackhawk-api-authentication-api-openapi.yml",
+    "stackhawk-applications-api-openapi.yml",
+    "stackhawk-global-configuration-api-openapi.yml",
+    "stackhawk-hosted-oas-api-openapi.yml",
+    "stackhawk-organization-teams-api-openapi.yml",
+    "stackhawk-organizations-api-openapi.yml",
+    "stackhawk-perch-api-openapi.yml",
+    "stackhawk-profile-scans-api-openapi.yml",
+    "stackhawk-reports-api-openapi.yml",
+    "stackhawk-repositories-api-openapi.yml",
+    "stackhawk-scan-configuration-api-openapi.yml",
+    "stackhawk-scan-policies-api-openapi.yml",
+    "stackhawk-scan-results-api-openapi.yml",
+    "stackhawk-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

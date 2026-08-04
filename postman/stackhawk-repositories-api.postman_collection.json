@@ -1,0 +1,629 @@
+{
+  "info": {
+    "_postman_id": "1678b427-b975-464e-a04c-f06d4fba8a7f",
+    "name": "StackHawk Api Authentication Repositories API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:59.000Z",
+    "updatedAt": "2026-07-28T03:04:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1678b427-b975-464e-a04c-f06d4fba8a7f"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "org",
+              "item": [
+                {
+                  "name": "{orgId}",
+                  "item": [
+                    {
+                      "name": "repository",
+                      "item": [
+                        {
+                          "name": "{repoId}",
+                          "item": [
+                            {
+                              "name": "Get Repository",
+                              "id": "e0068c99-c12b-4e63-bff6-b4b8d04c9f55",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/repository/:repoId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "repository",
+                                    ":repoId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f2363311-b0ce-4a3d-bdc8-71667353c91d",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "1879fc74-ba8f-46b4-b5cb-d3770109993e",
+                                      "key": "repoId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve details for a specific repository."
+                              },
+                              "response": [
+                                {
+                                  "id": "d09ce8bb-d9bd-47a8-b5b2-00cf3a0b63ff",
+                                  "name": "Repository details",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/org/:orgId/repository/:repoId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "org",
+                                        ":orgId",
+                                        "repository",
+                                        ":repoId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "repoId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"repositoryId\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T03:05:00.000Z",
+                                  "updatedAt": "2026-07-28T03:05:00.000Z",
+                                  "uid": "35240-d09ce8bb-d9bd-47a8-b5b2-00cf3a0b63ff"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:05:00.000Z",
+                              "updatedAt": "2026-07-28T03:05:00.000Z",
+                              "uid": "35240-e0068c99-c12b-4e63-bff6-b4b8d04c9f55"
+                            },
+                            {
+                              "name": "Update Repository",
+                              "id": "af57e86c-2bd7-471c-b747-b1aee16dc8bc",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/repository/:repoId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "repository",
+                                    ":repoId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "66557a1f-600f-448c-9951-4f893d5b110d",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "8bcd9664-4fd4-4488-8595-4186f25775e3",
+                                      "key": "repoId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Update repository configuration."
+                              },
+                              "response": [
+                                {
+                                  "id": "c17148ca-7f56-4e12-9393-458479cb6f6a",
+                                  "name": "Updated repository",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/org/:orgId/repository/:repoId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "org",
+                                        ":orgId",
+                                        "repository",
+                                        ":repoId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "repoId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"repositoryId\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T03:05:00.000Z",
+                                  "updatedAt": "2026-07-28T03:05:00.000Z",
+                                  "uid": "35240-c17148ca-7f56-4e12-9393-458479cb6f6a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:05:00.000Z",
+                              "updatedAt": "2026-07-28T03:05:00.000Z",
+                              "uid": "35240-af57e86c-2bd7-471c-b747-b1aee16dc8bc"
+                            },
+                            {
+                              "name": "Delete Repository",
+                              "id": "c3946b8a-e5e5-488e-9cac-7b08d12ce984",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/repository/:repoId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "repository",
+                                    ":repoId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "958cdfbc-7842-4d5f-a598-d35e150bedc8",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "6120e564-b97a-4055-bd3a-12eb6b1945f9",
+                                      "key": "repoId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Remove a repository from an organization."
+                              },
+                              "response": [
+                                {
+                                  "id": "9e90ea36-522d-48a2-99b6-2096c30c0cb3",
+                                  "name": "Repository deleted",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/org/:orgId/repository/:repoId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "org",
+                                        ":orgId",
+                                        "repository",
+                                        ":repoId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "repoId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:05:00.000Z",
+                                  "updatedAt": "2026-07-28T03:05:00.000Z",
+                                  "uid": "35240-9e90ea36-522d-48a2-99b6-2096c30c0cb3"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:05:00.000Z",
+                              "updatedAt": "2026-07-28T03:05:00.000Z",
+                              "uid": "35240-c3946b8a-e5e5-488e-9cac-7b08d12ce984"
+                            }
+                          ],
+                          "id": "93b209da-1340-417b-b4ca-49176923f12b",
+                          "createdAt": "2026-07-28T03:05:00.000Z",
+                          "updatedAt": "2026-07-28T03:05:00.000Z",
+                          "uid": "35240-93b209da-1340-417b-b4ca-49176923f12b"
+                        },
+                        {
+                          "name": "List Repositories",
+                          "id": "cf2f7814-34cd-4a52-bad7-f4b2989dbe89",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/repository",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "repository"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "dc5eb6d6-b47b-4a15-8765-ec0a2cd06719",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "List all repositories for an organization."
+                          },
+                          "response": [
+                            {
+                              "id": "24e01132-cca4-4622-951a-b0ec9ef591ab",
+                              "name": "List of repositories",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/repository",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "repository"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"repositories\": [\n    {\n      \"repositoryId\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"repositoryId\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:05:00.000Z",
+                              "updatedAt": "2026-07-28T03:05:00.000Z",
+                              "uid": "35240-24e01132-cca4-4622-951a-b0ec9ef591ab"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:05:00.000Z",
+                          "updatedAt": "2026-07-28T03:05:00.000Z",
+                          "uid": "35240-cf2f7814-34cd-4a52-bad7-f4b2989dbe89"
+                        },
+                        {
+                          "name": "Create Repository",
+                          "id": "fe1750f3-5990-468a-808f-427f56e58c4b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/repository",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "repository"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "4a1438e3-586b-4caf-b5b6-9111cfef11fe",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Register a new repository with an organization."
+                          },
+                          "response": [
+                            {
+                              "id": "c39f8d40-2e76-40cb-a095-e7d7ef76c3c2",
+                              "name": "Created repository",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/repository",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "repository"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"repositoryId\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:05:00.000Z",
+                              "updatedAt": "2026-07-28T03:05:00.000Z",
+                              "uid": "35240-c39f8d40-2e76-40cb-a095-e7d7ef76c3c2"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:05:00.000Z",
+                          "updatedAt": "2026-07-28T03:05:00.000Z",
+                          "uid": "35240-fe1750f3-5990-468a-808f-427f56e58c4b"
+                        }
+                      ],
+                      "id": "745f05a7-525b-4224-b576-652354b4f18a",
+                      "createdAt": "2026-07-28T03:05:00.000Z",
+                      "updatedAt": "2026-07-28T03:05:00.000Z",
+                      "uid": "35240-745f05a7-525b-4224-b576-652354b4f18a"
+                    }
+                  ],
+                  "id": "f3ae1fa2-2807-44c4-940b-e6edfb2575ba",
+                  "createdAt": "2026-07-28T03:05:00.000Z",
+                  "updatedAt": "2026-07-28T03:05:00.000Z",
+                  "uid": "35240-f3ae1fa2-2807-44c4-940b-e6edfb2575ba"
+                }
+              ],
+              "id": "6b490ef7-ec46-4907-9316-e7ad47a722de",
+              "createdAt": "2026-07-28T03:05:00.000Z",
+              "updatedAt": "2026-07-28T03:05:00.000Z",
+              "uid": "35240-6b490ef7-ec46-4907-9316-e7ad47a722de"
+            }
+          ],
+          "id": "0d60165f-a973-4e6f-a744-2eadaf10551b",
+          "createdAt": "2026-07-28T03:05:00.000Z",
+          "updatedAt": "2026-07-28T03:05:00.000Z",
+          "uid": "35240-0d60165f-a973-4e6f-a744-2eadaf10551b"
+        }
+      ],
+      "id": "807ab1bf-0457-4be8-9a0b-3a8729a8f533",
+      "createdAt": "2026-07-28T03:05:00.000Z",
+      "updatedAt": "2026-07-28T03:05:00.000Z",
+      "uid": "35240-807ab1bf-0457-4be8-9a0b-3a8729a8f533"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

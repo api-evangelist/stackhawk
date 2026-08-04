@@ -1,0 +1,720 @@
+{
+  "info": {
+    "_postman_id": "2ca094aa-98a4-4bc2-9667-98f7ae19fa12",
+    "name": "StackHawk Api Authentication Scan Results API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:05:02.000Z",
+    "updatedAt": "2026-07-28T03:05:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2ca094aa-98a4-4bc2-9667-98f7ae19fa12"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "app",
+              "item": [
+                {
+                  "name": "{appId}",
+                  "item": [
+                    {
+                      "name": "env",
+                      "item": [
+                        {
+                          "name": "{envId}",
+                          "item": [
+                            {
+                              "name": "scan",
+                              "item": [
+                                {
+                                  "name": "{scanId}",
+                                  "item": [
+                                    {
+                                      "name": "finding",
+                                      "item": [
+                                        {
+                                          "name": "{findingId}",
+                                          "item": [
+                                            {
+                                              "name": "Get Finding",
+                                              "id": "963160c9-bc5b-4a82-98ba-9a87bb972c40",
+                                              "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                              },
+                                              "request": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId/finding/:findingId",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "api",
+                                                    "v1",
+                                                    "app",
+                                                    ":appId",
+                                                    "env",
+                                                    ":envId",
+                                                    "scan",
+                                                    ":scanId",
+                                                    "finding",
+                                                    ":findingId"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "id": "e994538e-54af-42fb-acf0-ea299c6b0474",
+                                                      "key": "appId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) "
+                                                    },
+                                                    {
+                                                      "id": "c49b9e0c-54ac-4fcd-922d-58e221733d44",
+                                                      "key": "envId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) "
+                                                    },
+                                                    {
+                                                      "id": "82756663-f583-4b53-914e-80ff72d074a4",
+                                                      "key": "scanId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) "
+                                                    },
+                                                    {
+                                                      "id": "8d37d04f-4da8-4c55-af24-aeba21e231c0",
+                                                      "key": "findingId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) "
+                                                    }
+                                                  ]
+                                                },
+                                                "description": "Retrieve details for a specific security finding."
+                                              },
+                                              "response": [
+                                                {
+                                                  "id": "e14cd3ea-7644-4d29-9b24-6b23f02f012f",
+                                                  "name": "Finding details",
+                                                  "originalRequest": {
+                                                    "method": "GET",
+                                                    "header": [
+                                                      {
+                                                        "key": "Accept",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: bearer",
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                      }
+                                                    ],
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId/finding/:findingId",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "app",
+                                                        ":appId",
+                                                        "env",
+                                                        ":envId",
+                                                        "scan",
+                                                        ":scanId",
+                                                        "finding",
+                                                        ":findingId"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "appId"
+                                                        },
+                                                        {
+                                                          "key": "envId"
+                                                        },
+                                                        {
+                                                          "key": "scanId"
+                                                        },
+                                                        {
+                                                          "key": "findingId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "OK",
+                                                  "code": 200,
+                                                  "_postman_previewlanguage": "json",
+                                                  "header": [
+                                                    {
+                                                      "key": "Content-Type",
+                                                      "value": "application/json"
+                                                    }
+                                                  ],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": "{\n  \"findingId\": \"<string>\",\n  \"scanId\": \"<string>\",\n  \"severity\": \"LOW\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\"\n}",
+                                                  "createdAt": "2026-07-28T03:05:03.000Z",
+                                                  "updatedAt": "2026-07-28T03:05:03.000Z",
+                                                  "uid": "35240-e14cd3ea-7644-4d29-9b24-6b23f02f012f"
+                                                }
+                                              ],
+                                              "createdAt": "2026-07-28T03:05:03.000Z",
+                                              "updatedAt": "2026-07-28T03:05:03.000Z",
+                                              "uid": "35240-963160c9-bc5b-4a82-98ba-9a87bb972c40"
+                                            }
+                                          ],
+                                          "id": "45c7ceee-d6b5-469d-917d-caf35f6e63e2",
+                                          "createdAt": "2026-07-28T03:05:03.000Z",
+                                          "updatedAt": "2026-07-28T03:05:03.000Z",
+                                          "uid": "35240-45c7ceee-d6b5-469d-917d-caf35f6e63e2"
+                                        },
+                                        {
+                                          "name": "List Findings",
+                                          "id": "8a762fa1-f239-4009-8479-916a61a9d3c7",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId/finding",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "app",
+                                                ":appId",
+                                                "env",
+                                                ":envId",
+                                                "scan",
+                                                ":scanId",
+                                                "finding"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "ce2b9d47-c963-4283-a2cf-133330004bc2",
+                                                  "key": "appId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "569a936c-7470-4f25-9dcc-50c9dcf26bc3",
+                                                  "key": "envId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "727a0631-0117-417d-8943-51708ce61109",
+                                                  "key": "scanId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            },
+                                            "description": "List all security findings from a specific scan."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "40a65693-c7e7-46f9-a5e5-599cbbb60656",
+                                              "name": "List of findings",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: bearer",
+                                                    "key": "Authorization",
+                                                    "value": "Bearer <token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId/finding",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "api",
+                                                    "v1",
+                                                    "app",
+                                                    ":appId",
+                                                    "env",
+                                                    ":envId",
+                                                    "scan",
+                                                    ":scanId",
+                                                    "finding"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "appId"
+                                                    },
+                                                    {
+                                                      "key": "envId"
+                                                    },
+                                                    {
+                                                      "key": "scanId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"findings\": [\n    {\n      \"findingId\": \"<string>\",\n      \"scanId\": \"<string>\",\n      \"severity\": \"MEDIUM\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"path\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    {\n      \"findingId\": \"<string>\",\n      \"scanId\": \"<string>\",\n      \"severity\": \"MEDIUM\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"path\": \"<string>\",\n      \"method\": \"<string>\"\n    }\n  ]\n}",
+                                              "createdAt": "2026-07-28T03:05:03.000Z",
+                                              "updatedAt": "2026-07-28T03:05:03.000Z",
+                                              "uid": "35240-40a65693-c7e7-46f9-a5e5-599cbbb60656"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T03:05:03.000Z",
+                                          "updatedAt": "2026-07-28T03:05:03.000Z",
+                                          "uid": "35240-8a762fa1-f239-4009-8479-916a61a9d3c7"
+                                        }
+                                      ],
+                                      "id": "e46d064d-4a8b-4b22-8edd-36851f229a69",
+                                      "createdAt": "2026-07-28T03:05:03.000Z",
+                                      "updatedAt": "2026-07-28T03:05:03.000Z",
+                                      "uid": "35240-e46d064d-4a8b-4b22-8edd-36851f229a69"
+                                    },
+                                    {
+                                      "name": "Get Scan",
+                                      "id": "c53a581c-7e04-4389-bb2b-28aaf24ec9eb",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "app",
+                                            ":appId",
+                                            "env",
+                                            ":envId",
+                                            "scan",
+                                            ":scanId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "33187e1a-d88c-451d-987a-c12c51d8d98b",
+                                              "key": "appId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "222e908e-e4b8-404c-b51c-26c708733867",
+                                              "key": "envId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "f34d58d6-3e04-44de-a2a6-886bc133f6cb",
+                                              "key": "scanId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        },
+                                        "description": "Retrieve details for a specific scan."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "6ecdcfe5-a6e8-4549-ad3b-ccff668abd82",
+                                          "name": "Scan details",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "app",
+                                                ":appId",
+                                                "env",
+                                                ":envId",
+                                                "scan",
+                                                ":scanId"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "appId"
+                                                },
+                                                {
+                                                  "key": "envId"
+                                                },
+                                                {
+                                                  "key": "scanId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"scanId\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"envId\": \"<string>\",\n  \"status\": \"RUNNING\",\n  \"startedAt\": \"<dateTime>\",\n  \"completedAt\": \"<dateTime>\",\n  \"findingCount\": \"<integer>\"\n}",
+                                          "createdAt": "2026-07-28T03:05:03.000Z",
+                                          "updatedAt": "2026-07-28T03:05:03.000Z",
+                                          "uid": "35240-6ecdcfe5-a6e8-4549-ad3b-ccff668abd82"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T03:05:03.000Z",
+                                      "updatedAt": "2026-07-28T03:05:03.000Z",
+                                      "uid": "35240-c53a581c-7e04-4389-bb2b-28aaf24ec9eb"
+                                    },
+                                    {
+                                      "name": "Delete Scan",
+                                      "id": "5a2bbbf7-a3ee-410b-9f2d-4127c30a4dff",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "DELETE",
+                                        "header": [],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "app",
+                                            ":appId",
+                                            "env",
+                                            ":envId",
+                                            "scan",
+                                            ":scanId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "13d73f05-db7a-4cad-911a-09c9efd099cd",
+                                              "key": "appId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "9eb13d77-9c0f-42fa-82f4-a79f34acfccc",
+                                              "key": "envId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "c2000a43-48f9-4bb9-be1a-f4164f2548a8",
+                                              "key": "scanId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        },
+                                        "description": "Delete a scan and its associated findings."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "985e78de-a79f-45ae-8a7f-f02587d2c3e5",
+                                          "name": "Scan deleted",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan/:scanId",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v1",
+                                                "app",
+                                                ":appId",
+                                                "env",
+                                                ":envId",
+                                                "scan",
+                                                ":scanId"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "appId"
+                                                },
+                                                {
+                                                  "key": "envId"
+                                                },
+                                                {
+                                                  "key": "scanId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "No Content",
+                                          "code": 204,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T03:05:03.000Z",
+                                          "updatedAt": "2026-07-28T03:05:03.000Z",
+                                          "uid": "35240-985e78de-a79f-45ae-8a7f-f02587d2c3e5"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T03:05:03.000Z",
+                                      "updatedAt": "2026-07-28T03:05:03.000Z",
+                                      "uid": "35240-5a2bbbf7-a3ee-410b-9f2d-4127c30a4dff"
+                                    }
+                                  ],
+                                  "id": "3506bd14-1e95-462d-98f5-6ce1ec06e74d",
+                                  "createdAt": "2026-07-28T03:05:03.000Z",
+                                  "updatedAt": "2026-07-28T03:05:03.000Z",
+                                  "uid": "35240-3506bd14-1e95-462d-98f5-6ce1ec06e74d"
+                                },
+                                {
+                                  "name": "List Scans",
+                                  "id": "56b9ce40-1629-4020-8151-edb2bb251c06",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan?pageToken=<string>&pageSize=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "app",
+                                        ":appId",
+                                        "env",
+                                        ":envId",
+                                        "scan"
+                                      ],
+                                      "query": [
+                                        {
+                                          "key": "pageToken",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "pageSize",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "2018a07e-f8ba-4dc4-a91e-6cbb54aeccf8",
+                                          "key": "appId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "2f50e3be-bebd-4209-9f02-b6da616dcbc4",
+                                          "key": "envId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "List all scans for an application environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "563ca6b4-4710-4011-9044-9c8391ac881f",
+                                      "name": "List of scans",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/scan?pageToken=<string>&pageSize=<integer>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "app",
+                                            ":appId",
+                                            "env",
+                                            ":envId",
+                                            "scan"
+                                          ],
+                                          "query": [
+                                            {
+                                              "key": "pageToken",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "pageSize",
+                                              "value": "<integer>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "appId"
+                                            },
+                                            {
+                                              "key": "envId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"scans\": [\n    {\n      \"scanId\": \"<string>\",\n      \"appId\": \"<string>\",\n      \"envId\": \"<string>\",\n      \"status\": \"COMPLETED\",\n      \"startedAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\",\n      \"findingCount\": \"<integer>\"\n    },\n    {\n      \"scanId\": \"<string>\",\n      \"appId\": \"<string>\",\n      \"envId\": \"<string>\",\n      \"status\": \"FAILED\",\n      \"startedAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\",\n      \"findingCount\": \"<integer>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T03:05:03.000Z",
+                                      "updatedAt": "2026-07-28T03:05:03.000Z",
+                                      "uid": "35240-563ca6b4-4710-4011-9044-9c8391ac881f"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:05:03.000Z",
+                                  "updatedAt": "2026-07-28T03:05:03.000Z",
+                                  "uid": "35240-56b9ce40-1629-4020-8151-edb2bb251c06"
+                                }
+                              ],
+                              "id": "74d670b7-08a0-461d-8818-9de76bf2aa09",
+                              "createdAt": "2026-07-28T03:05:03.000Z",
+                              "updatedAt": "2026-07-28T03:05:03.000Z",
+                              "uid": "35240-74d670b7-08a0-461d-8818-9de76bf2aa09"
+                            }
+                          ],
+                          "id": "21cde218-fa84-4221-b650-f95ee5e7123d",
+                          "createdAt": "2026-07-28T03:05:03.000Z",
+                          "updatedAt": "2026-07-28T03:05:03.000Z",
+                          "uid": "35240-21cde218-fa84-4221-b650-f95ee5e7123d"
+                        }
+                      ],
+                      "id": "7a1a7df7-f913-4c28-8657-cf188d51742f",
+                      "createdAt": "2026-07-28T03:05:03.000Z",
+                      "updatedAt": "2026-07-28T03:05:03.000Z",
+                      "uid": "35240-7a1a7df7-f913-4c28-8657-cf188d51742f"
+                    }
+                  ],
+                  "id": "65496d39-1828-48fc-824b-99b52fe05a64",
+                  "createdAt": "2026-07-28T03:05:03.000Z",
+                  "updatedAt": "2026-07-28T03:05:03.000Z",
+                  "uid": "35240-65496d39-1828-48fc-824b-99b52fe05a64"
+                }
+              ],
+              "id": "19105a47-f481-43cb-ad23-620466a64532",
+              "createdAt": "2026-07-28T03:05:03.000Z",
+              "updatedAt": "2026-07-28T03:05:03.000Z",
+              "uid": "35240-19105a47-f481-43cb-ad23-620466a64532"
+            }
+          ],
+          "id": "bb174305-94ac-4baa-8242-c1e7c3c02446",
+          "createdAt": "2026-07-28T03:05:03.000Z",
+          "updatedAt": "2026-07-28T03:05:03.000Z",
+          "uid": "35240-bb174305-94ac-4baa-8242-c1e7c3c02446"
+        }
+      ],
+      "id": "581024f8-cbbb-4cf9-8e61-e02ec56ea994",
+      "createdAt": "2026-07-28T03:05:03.000Z",
+      "updatedAt": "2026-07-28T03:05:03.000Z",
+      "uid": "35240-581024f8-cbbb-4cf9-8e61-e02ec56ea994"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

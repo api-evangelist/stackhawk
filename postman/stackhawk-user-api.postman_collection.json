@@ -1,0 +1,239 @@
+{
+  "info": {
+    "_postman_id": "395fb65d-3fe8-4731-9534-c7a617b44601",
+    "name": "StackHawk Api Authentication User API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:05:07.000Z",
+    "updatedAt": "2026-07-28T03:05:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-395fb65d-3fe8-4731-9534-c7a617b44601"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "user",
+              "item": [
+                {
+                  "name": "Get Current User",
+                  "id": "687c8e6a-2a52-4808-9efd-3305217f2bca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/user",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "user"
+                      ]
+                    },
+                    "description": "Retrieve information about the currently authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "a4b3903c-0392-4807-ae2f-b95937dbe255",
+                      "name": "Current user information",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:05:08.000Z",
+                      "updatedAt": "2026-07-28T03:05:08.000Z",
+                      "uid": "35240-a4b3903c-0392-4807-ae2f-b95937dbe255"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:05:08.000Z",
+                  "updatedAt": "2026-07-28T03:05:08.000Z",
+                  "uid": "35240-687c8e6a-2a52-4808-9efd-3305217f2bca"
+                },
+                {
+                  "name": "Update User Profile",
+                  "id": "f50d9080-7a15-4393-bec7-68e68e5a32d6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/user",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "user"
+                      ]
+                    },
+                    "description": "Update profile information for the authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "55f5e983-7a35-44ec-a361-02c9059a87e6",
+                      "name": "Updated user",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:05:08.000Z",
+                      "updatedAt": "2026-07-28T03:05:08.000Z",
+                      "uid": "35240-55f5e983-7a35-44ec-a361-02c9059a87e6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:05:08.000Z",
+                  "updatedAt": "2026-07-28T03:05:08.000Z",
+                  "uid": "35240-f50d9080-7a15-4393-bec7-68e68e5a32d6"
+                }
+              ],
+              "id": "8565e259-8036-462a-98b7-6948769c09bc",
+              "createdAt": "2026-07-28T03:05:08.000Z",
+              "updatedAt": "2026-07-28T03:05:08.000Z",
+              "uid": "35240-8565e259-8036-462a-98b7-6948769c09bc"
+            }
+          ],
+          "id": "218538a0-1fdf-48c7-8f19-f133953b6bb1",
+          "createdAt": "2026-07-28T03:05:08.000Z",
+          "updatedAt": "2026-07-28T03:05:08.000Z",
+          "uid": "35240-218538a0-1fdf-48c7-8f19-f133953b6bb1"
+        }
+      ],
+      "id": "917d3b4d-9d95-4a24-ad27-71a174de8719",
+      "createdAt": "2026-07-28T03:05:08.000Z",
+      "updatedAt": "2026-07-28T03:05:08.000Z",
+      "uid": "35240-917d3b4d-9d95-4a24-ad27-71a174de8719"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

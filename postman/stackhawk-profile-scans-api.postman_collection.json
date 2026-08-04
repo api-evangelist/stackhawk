@@ -1,0 +1,293 @@
+{
+  "info": {
+    "_postman_id": "e25cf1fb-f0bb-4eee-9536-28e22e1c3395",
+    "name": "StackHawk Api Authentication Profile Scans API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:57.000Z",
+    "updatedAt": "2026-07-28T03:04:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e25cf1fb-f0bb-4eee-9536-28e22e1c3395"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "app",
+              "item": [
+                {
+                  "name": "{appId}",
+                  "item": [
+                    {
+                      "name": "env",
+                      "item": [
+                        {
+                          "name": "{envId}",
+                          "item": [
+                            {
+                              "name": "profile",
+                              "item": [
+                                {
+                                  "name": "Get Profile Scan Results",
+                                  "id": "ae308355-3c88-4f01-8deb-3989333b9a34",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/profile",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "app",
+                                        ":appId",
+                                        "env",
+                                        ":envId",
+                                        "profile"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "40ae21e7-f929-469b-929f-22e439c21102",
+                                          "key": "appId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "9f09d304-e74c-433c-b79c-3f8a35ac092c",
+                                          "key": "envId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Get profile scan results for an application environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "3b27a7e8-c6e3-4d60-9270-8900ff4761e0",
+                                      "name": "Profile scan results",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/profile",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "app",
+                                            ":appId",
+                                            "env",
+                                            ":envId",
+                                            "profile"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "appId"
+                                            },
+                                            {
+                                              "key": "envId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"profileId\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"envId\": \"<string>\",\n  \"discoveredEndpoints\": \"<integer>\",\n  \"analyzedAt\": \"<dateTime>\"\n}",
+                                      "createdAt": "2026-07-28T03:04:57.000Z",
+                                      "updatedAt": "2026-07-28T03:04:57.000Z",
+                                      "uid": "35240-3b27a7e8-c6e3-4d60-9270-8900ff4761e0"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:04:57.000Z",
+                                  "updatedAt": "2026-07-28T03:04:57.000Z",
+                                  "uid": "35240-ae308355-3c88-4f01-8deb-3989333b9a34"
+                                },
+                                {
+                                  "name": "Request Profile Analysis",
+                                  "id": "b6b31b6d-df89-4fca-88c6-f92cc0e8051e",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/profile",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "app",
+                                        ":appId",
+                                        "env",
+                                        ":envId",
+                                        "profile"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "8189ce50-314e-4272-835c-e30bb9b27b6e",
+                                          "key": "appId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "9bc01e7a-0495-4b13-b5b2-2a131c5239d8",
+                                          "key": "envId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Request a new profile analysis for an application environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "c79642f3-9d91-4da7-81e2-12511975ed82",
+                                      "name": "Profile analysis requested",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId/profile",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "app",
+                                            ":appId",
+                                            "env",
+                                            ":envId",
+                                            "profile"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "appId"
+                                            },
+                                            {
+                                              "key": "envId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Accepted",
+                                      "code": 202,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:04:57.000Z",
+                                      "updatedAt": "2026-07-28T03:04:57.000Z",
+                                      "uid": "35240-c79642f3-9d91-4da7-81e2-12511975ed82"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:04:57.000Z",
+                                  "updatedAt": "2026-07-28T03:04:57.000Z",
+                                  "uid": "35240-b6b31b6d-df89-4fca-88c6-f92cc0e8051e"
+                                }
+                              ],
+                              "id": "2a7bdcc5-6c78-420b-8e12-e6d189879f9e",
+                              "createdAt": "2026-07-28T03:04:57.000Z",
+                              "updatedAt": "2026-07-28T03:04:57.000Z",
+                              "uid": "35240-2a7bdcc5-6c78-420b-8e12-e6d189879f9e"
+                            }
+                          ],
+                          "id": "771bfdf1-8b2d-4f26-815f-8c1d3273cd09",
+                          "createdAt": "2026-07-28T03:04:57.000Z",
+                          "updatedAt": "2026-07-28T03:04:57.000Z",
+                          "uid": "35240-771bfdf1-8b2d-4f26-815f-8c1d3273cd09"
+                        }
+                      ],
+                      "id": "4bb5e0ae-8dd9-489c-8f04-97bf32f99e9e",
+                      "createdAt": "2026-07-28T03:04:57.000Z",
+                      "updatedAt": "2026-07-28T03:04:57.000Z",
+                      "uid": "35240-4bb5e0ae-8dd9-489c-8f04-97bf32f99e9e"
+                    }
+                  ],
+                  "id": "298f657c-4c75-48e8-9b96-3b091430ff46",
+                  "createdAt": "2026-07-28T03:04:57.000Z",
+                  "updatedAt": "2026-07-28T03:04:57.000Z",
+                  "uid": "35240-298f657c-4c75-48e8-9b96-3b091430ff46"
+                }
+              ],
+              "id": "d7e31ec1-41a9-4aa5-b9d2-5089f529ae21",
+              "createdAt": "2026-07-28T03:04:57.000Z",
+              "updatedAt": "2026-07-28T03:04:57.000Z",
+              "uid": "35240-d7e31ec1-41a9-4aa5-b9d2-5089f529ae21"
+            }
+          ],
+          "id": "18272508-ac3c-4eb1-ac2e-f1930be82a5d",
+          "createdAt": "2026-07-28T03:04:57.000Z",
+          "updatedAt": "2026-07-28T03:04:57.000Z",
+          "uid": "35240-18272508-ac3c-4eb1-ac2e-f1930be82a5d"
+        }
+      ],
+      "id": "6986fd52-ece1-42cc-8ec9-6b779141b2e5",
+      "createdAt": "2026-07-28T03:04:57.000Z",
+      "updatedAt": "2026-07-28T03:04:57.000Z",
+      "uid": "35240-6986fd52-ece1-42cc-8ec9-6b779141b2e5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

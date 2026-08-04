@@ -1,0 +1,381 @@
+{
+  "info": {
+    "_postman_id": "7fb436bf-1188-4a4e-92ab-6080bb27a7f7",
+    "name": "StackHawk Api Authentication Hosted OAS API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:50.000Z",
+    "updatedAt": "2026-07-28T03:04:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7fb436bf-1188-4a4e-92ab-6080bb27a7f7"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "oas",
+              "item": [
+                {
+                  "name": "{appId}",
+                  "item": [
+                    {
+                      "name": "upload",
+                      "item": [
+                        {
+                          "name": "Upload OpenAPI Spec File",
+                          "id": "b79d7834-f111-41cf-b3ef-40f9bca97422",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "key": "file",
+                                  "type": "file",
+                                  "value": null
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/oas/:appId/upload",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "oas",
+                                ":appId",
+                                "upload"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b678cef3-02ad-4571-94ef-2a4fa50f4cee",
+                                  "key": "appId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Upload an OpenAPI specification file for an application."
+                          },
+                          "response": [
+                            {
+                              "id": "3568c766-af20-4c4e-b788-f8321007975c",
+                              "name": "Upload confirmation",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "multipart/form-data"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "formdata",
+                                  "formdata": [
+                                    {
+                                      "key": "file",
+                                      "type": "file"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/oas/:appId/upload",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "oas",
+                                    ":appId",
+                                    "upload"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "appId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:04:51.000Z",
+                              "updatedAt": "2026-07-28T03:04:51.000Z",
+                              "uid": "35240-3568c766-af20-4c4e-b788-f8321007975c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:51.000Z",
+                          "updatedAt": "2026-07-28T03:04:51.000Z",
+                          "uid": "35240-b79d7834-f111-41cf-b3ef-40f9bca97422"
+                        }
+                      ],
+                      "id": "02235319-a8c8-454d-8498-22d15b5a2ef1",
+                      "createdAt": "2026-07-28T03:04:51.000Z",
+                      "updatedAt": "2026-07-28T03:04:51.000Z",
+                      "uid": "35240-02235319-a8c8-454d-8498-22d15b5a2ef1"
+                    },
+                    {
+                      "name": "mapping",
+                      "item": [
+                        {
+                          "name": "Get Application OpenAPI Specs",
+                          "id": "64b68db9-8e5a-4732-8ef6-44e63cfad279",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/oas/:appId/mapping",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "oas",
+                                ":appId",
+                                "mapping"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "77300e0d-0d89-4f0a-8add-01d0a29da42a",
+                                  "key": "appId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Retrieve the OpenAPI spec mapping for an application."
+                          },
+                          "response": [
+                            {
+                              "id": "98a25e81-3930-4e31-9dbe-88b9ae07a51c",
+                              "name": "OpenAPI spec mapping",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/oas/:appId/mapping",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "oas",
+                                    ":appId",
+                                    "mapping"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "appId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:04:51.000Z",
+                              "updatedAt": "2026-07-28T03:04:51.000Z",
+                              "uid": "35240-98a25e81-3930-4e31-9dbe-88b9ae07a51c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:51.000Z",
+                          "updatedAt": "2026-07-28T03:04:51.000Z",
+                          "uid": "35240-64b68db9-8e5a-4732-8ef6-44e63cfad279"
+                        },
+                        {
+                          "name": "Map Application OpenAPI Specs",
+                          "id": "e9110239-f14d-4872-9da7-9b0bca05fe05",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/oas/:appId/mapping",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "oas",
+                                ":appId",
+                                "mapping"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "51e6eafa-dca8-4e41-9869-f7042a50d336",
+                                  "key": "appId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Map an OpenAPI spec to an application."
+                          },
+                          "response": [
+                            {
+                              "id": "c3a23c9d-d1ab-4740-9607-970ee5407d68",
+                              "name": "Mapping updated",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/oas/:appId/mapping",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "oas",
+                                    ":appId",
+                                    "mapping"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "appId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:04:51.000Z",
+                              "updatedAt": "2026-07-28T03:04:51.000Z",
+                              "uid": "35240-c3a23c9d-d1ab-4740-9607-970ee5407d68"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:51.000Z",
+                          "updatedAt": "2026-07-28T03:04:51.000Z",
+                          "uid": "35240-e9110239-f14d-4872-9da7-9b0bca05fe05"
+                        }
+                      ],
+                      "id": "262e1cc9-6749-453c-b89a-50fb7f9b79dc",
+                      "createdAt": "2026-07-28T03:04:51.000Z",
+                      "updatedAt": "2026-07-28T03:04:51.000Z",
+                      "uid": "35240-262e1cc9-6749-453c-b89a-50fb7f9b79dc"
+                    }
+                  ],
+                  "id": "99804427-66d1-4565-bc31-9ea7515d7bbf",
+                  "createdAt": "2026-07-28T03:04:51.000Z",
+                  "updatedAt": "2026-07-28T03:04:51.000Z",
+                  "uid": "35240-99804427-66d1-4565-bc31-9ea7515d7bbf"
+                }
+              ],
+              "id": "b6ca75ef-19ed-4236-a47a-01d54f450632",
+              "createdAt": "2026-07-28T03:04:51.000Z",
+              "updatedAt": "2026-07-28T03:04:51.000Z",
+              "uid": "35240-b6ca75ef-19ed-4236-a47a-01d54f450632"
+            }
+          ],
+          "id": "b535f33d-5322-4671-a9ba-51afea33a60c",
+          "createdAt": "2026-07-28T03:04:51.000Z",
+          "updatedAt": "2026-07-28T03:04:51.000Z",
+          "uid": "35240-b535f33d-5322-4671-a9ba-51afea33a60c"
+        }
+      ],
+      "id": "c432a850-e69b-4242-bc92-e516906a05a0",
+      "createdAt": "2026-07-28T03:04:51.000Z",
+      "updatedAt": "2026-07-28T03:04:51.000Z",
+      "uid": "35240-c432a850-e69b-4242-bc92-e516906a05a0"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

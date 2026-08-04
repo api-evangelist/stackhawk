@@ -1,0 +1,158 @@
+{
+  "info": {
+    "_postman_id": "f418b86d-5bed-47cb-b787-9998dd516fa2",
+    "name": "StackHawk Api Authentication Global Configuration API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:48.000Z",
+    "updatedAt": "2026-07-28T03:04:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f418b86d-5bed-47cb-b787-9998dd516fa2"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "global-configuration",
+              "item": [
+                {
+                  "name": "{configName}",
+                  "item": [
+                    {
+                      "name": "Get Global Configuration",
+                      "id": "d6e2ec89-cf78-4ba2-9c0f-77f15d207c89",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/global-configuration/:configName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "global-configuration",
+                            ":configName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "27d90950-c815-4425-bb1a-36ae48e202f6",
+                              "key": "configName",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve an organization-level global configuration by name."
+                      },
+                      "response": [
+                        {
+                          "id": "e47cce0d-c47c-40ce-8dfa-65e434989c93",
+                          "name": "Global configuration",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/global-configuration/:configName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "global-configuration",
+                                ":configName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "configName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"name\": \"<string>\",\n  \"value\": {\n    \"etaa\": false\n  }\n}",
+                          "createdAt": "2026-07-28T03:04:49.000Z",
+                          "updatedAt": "2026-07-28T03:04:49.000Z",
+                          "uid": "35240-e47cce0d-c47c-40ce-8dfa-65e434989c93"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:49.000Z",
+                      "updatedAt": "2026-07-28T03:04:49.000Z",
+                      "uid": "35240-d6e2ec89-cf78-4ba2-9c0f-77f15d207c89"
+                    }
+                  ],
+                  "id": "4218c7d2-e8bf-4198-9a6e-00db7e8c0485",
+                  "createdAt": "2026-07-28T03:04:49.000Z",
+                  "updatedAt": "2026-07-28T03:04:49.000Z",
+                  "uid": "35240-4218c7d2-e8bf-4198-9a6e-00db7e8c0485"
+                }
+              ],
+              "id": "4bb83f86-0b0e-49e7-aa66-fe2b70c0deb4",
+              "createdAt": "2026-07-28T03:04:49.000Z",
+              "updatedAt": "2026-07-28T03:04:49.000Z",
+              "uid": "35240-4bb83f86-0b0e-49e7-aa66-fe2b70c0deb4"
+            }
+          ],
+          "id": "4ea247ac-f770-4795-a106-8a12f77e51f4",
+          "createdAt": "2026-07-28T03:04:49.000Z",
+          "updatedAt": "2026-07-28T03:04:49.000Z",
+          "uid": "35240-4ea247ac-f770-4795-a106-8a12f77e51f4"
+        }
+      ],
+      "id": "f9feb271-c807-4702-867c-11bb6ea65deb",
+      "createdAt": "2026-07-28T03:04:49.000Z",
+      "updatedAt": "2026-07-28T03:04:49.000Z",
+      "uid": "35240-f9feb271-c807-4702-867c-11bb6ea65deb"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

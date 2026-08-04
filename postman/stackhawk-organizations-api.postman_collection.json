@@ -1,0 +1,292 @@
+{
+  "info": {
+    "_postman_id": "f3dca853-ed92-408b-9793-0805b579c7a7",
+    "name": "StackHawk Api Authentication Organizations API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:52.000Z",
+    "updatedAt": "2026-07-28T03:04:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f3dca853-ed92-408b-9793-0805b579c7a7"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "org",
+              "item": [
+                {
+                  "name": "{orgId}",
+                  "item": [
+                    {
+                      "name": "members",
+                      "item": [
+                        {
+                          "name": "List Members",
+                          "id": "c215d024-e5ba-4f67-bf41-dc9bff97b821",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/members",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "members"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b490fff6-3596-4e65-86e5-e86d61ecebb3",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "List all members of an organization."
+                          },
+                          "response": [
+                            {
+                              "id": "71e61d20-3643-4a4c-bf71-80ab7957818e",
+                              "name": "Organization members",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/members",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "members"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"members\": [\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:04:53.000Z",
+                              "updatedAt": "2026-07-28T03:04:53.000Z",
+                              "uid": "35240-71e61d20-3643-4a4c-bf71-80ab7957818e"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:53.000Z",
+                          "updatedAt": "2026-07-28T03:04:53.000Z",
+                          "uid": "35240-c215d024-e5ba-4f67-bf41-dc9bff97b821"
+                        }
+                      ],
+                      "id": "4c56df44-414b-48b1-b869-0272a20bfb13",
+                      "createdAt": "2026-07-28T03:04:53.000Z",
+                      "updatedAt": "2026-07-28T03:04:53.000Z",
+                      "uid": "35240-4c56df44-414b-48b1-b869-0272a20bfb13"
+                    },
+                    {
+                      "name": "audit",
+                      "item": [
+                        {
+                          "name": "Get Audit History",
+                          "id": "2bc7d1d6-55dd-4da8-a88c-e2f1660eacc4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/audit?pageToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "audit"
+                              ],
+                              "query": [
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5e3fcd63-2dcf-46b1-b843-e487bddfe257",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Retrieve audit history for an organization. Enterprise feature."
+                          },
+                          "response": [
+                            {
+                              "id": "0a8dcb61-1ad1-4e11-974a-040337fda8ea",
+                              "name": "Audit history",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/audit?pageToken=<string>&pageSize=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "audit"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "pageSize",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"records\": [\n    {\n      \"id\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"action\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"details\": {\n        \"esse10c\": true,\n        \"incc0\": 10028951\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"action\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"details\": {\n        \"consectetur_1\": \"cillum ullam\",\n        \"Excepteur1\": 55759904.25956699\n      }\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:04:53.000Z",
+                              "updatedAt": "2026-07-28T03:04:53.000Z",
+                              "uid": "35240-0a8dcb61-1ad1-4e11-974a-040337fda8ea"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:53.000Z",
+                          "updatedAt": "2026-07-28T03:04:53.000Z",
+                          "uid": "35240-2bc7d1d6-55dd-4da8-a88c-e2f1660eacc4"
+                        }
+                      ],
+                      "id": "0ca5e86b-54e6-4d23-a91b-9f527cf4fb9d",
+                      "createdAt": "2026-07-28T03:04:53.000Z",
+                      "updatedAt": "2026-07-28T03:04:53.000Z",
+                      "uid": "35240-0ca5e86b-54e6-4d23-a91b-9f527cf4fb9d"
+                    }
+                  ],
+                  "id": "2c675c8b-08d5-4732-828e-bd3db9c53dfd",
+                  "createdAt": "2026-07-28T03:04:53.000Z",
+                  "updatedAt": "2026-07-28T03:04:53.000Z",
+                  "uid": "35240-2c675c8b-08d5-4732-828e-bd3db9c53dfd"
+                }
+              ],
+              "id": "1596328e-23b8-4729-87c3-c88f1ce72847",
+              "createdAt": "2026-07-28T03:04:53.000Z",
+              "updatedAt": "2026-07-28T03:04:53.000Z",
+              "uid": "35240-1596328e-23b8-4729-87c3-c88f1ce72847"
+            }
+          ],
+          "id": "590055f6-da00-44da-a3d3-e72b6e621f94",
+          "createdAt": "2026-07-28T03:04:53.000Z",
+          "updatedAt": "2026-07-28T03:04:53.000Z",
+          "uid": "35240-590055f6-da00-44da-a3d3-e72b6e621f94"
+        }
+      ],
+      "id": "b553e1dc-16d8-43d6-bb35-435afc6a1add",
+      "createdAt": "2026-07-28T03:04:53.000Z",
+      "updatedAt": "2026-07-28T03:04:53.000Z",
+      "uid": "35240-b553e1dc-16d8-43d6-bb35-435afc6a1add"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

@@ -1,0 +1,629 @@
+{
+  "info": {
+    "_postman_id": "963241f9-565b-41d5-a217-43cb808a5592",
+    "name": "StackHawk Api Authentication Scan Policies API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:05:01.000Z",
+    "updatedAt": "2026-07-28T03:05:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-963241f9-565b-41d5-a217-43cb808a5592"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "org",
+              "item": [
+                {
+                  "name": "{orgId}",
+                  "item": [
+                    {
+                      "name": "policy",
+                      "item": [
+                        {
+                          "name": "{policyId}",
+                          "item": [
+                            {
+                              "name": "Get Scan Policy",
+                              "id": "026a16ae-6098-4828-90cb-ce022e5172e1",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/policy/:policyId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "policy",
+                                    ":policyId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "049c7f62-c65c-4bfa-87d7-edd61738dc54",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "9df59308-af65-4043-a86e-791212e4aeec",
+                                      "key": "policyId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve a specific scan policy."
+                              },
+                              "response": [
+                                {
+                                  "id": "2c749702-b114-48bf-b69d-d7d153eefbd1",
+                                  "name": "Scan policy",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/org/:orgId/policy/:policyId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "org",
+                                        ":orgId",
+                                        "policy",
+                                        ":policyId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "policyId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"policyId\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"rules\": [\n    {\n      \"cillumd36\": -64145973.571583204\n    },\n    {\n      \"ullamco_ff\": 68510707.81600979\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:05:02.000Z",
+                                  "updatedAt": "2026-07-28T03:05:02.000Z",
+                                  "uid": "35240-2c749702-b114-48bf-b69d-d7d153eefbd1"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:05:02.000Z",
+                              "updatedAt": "2026-07-28T03:05:02.000Z",
+                              "uid": "35240-026a16ae-6098-4828-90cb-ce022e5172e1"
+                            },
+                            {
+                              "name": "Update Scan Policy",
+                              "id": "e3daa62b-6a63-49d9-8836-2d6c3b4fa1e2",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/policy/:policyId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "policy",
+                                    ":policyId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e47ae87f-176e-42ae-80ff-dcdb5bc884bc",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "cae751ef-5d43-4fe1-86a9-eef064565a9b",
+                                      "key": "policyId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Update an existing scan policy."
+                              },
+                              "response": [
+                                {
+                                  "id": "02a01c69-cdfd-4e47-9418-1020d84a384f",
+                                  "name": "Updated scan policy",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/org/:orgId/policy/:policyId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "org",
+                                        ":orgId",
+                                        "policy",
+                                        ":policyId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "policyId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"policyId\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"rules\": [\n    {\n      \"cillumd36\": -64145973.571583204\n    },\n    {\n      \"ullamco_ff\": 68510707.81600979\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:05:02.000Z",
+                                  "updatedAt": "2026-07-28T03:05:02.000Z",
+                                  "uid": "35240-02a01c69-cdfd-4e47-9418-1020d84a384f"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:05:02.000Z",
+                              "updatedAt": "2026-07-28T03:05:02.000Z",
+                              "uid": "35240-e3daa62b-6a63-49d9-8836-2d6c3b4fa1e2"
+                            },
+                            {
+                              "name": "Delete Scan Policy",
+                              "id": "3f8078fe-31fd-4952-96c4-754f49c83714",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/policy/:policyId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "policy",
+                                    ":policyId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "fd7190c2-0871-4822-9d9b-de12ca9e9a7a",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "2f973194-1d7c-4500-8186-98e7c821ef97",
+                                      "key": "policyId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Delete a scan policy."
+                              },
+                              "response": [
+                                {
+                                  "id": "63c022ef-f588-43b2-9fea-c6fd3f82f2f1",
+                                  "name": "Policy deleted",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/org/:orgId/policy/:policyId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "org",
+                                        ":orgId",
+                                        "policy",
+                                        ":policyId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "policyId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:05:02.000Z",
+                                  "updatedAt": "2026-07-28T03:05:02.000Z",
+                                  "uid": "35240-63c022ef-f588-43b2-9fea-c6fd3f82f2f1"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:05:02.000Z",
+                              "updatedAt": "2026-07-28T03:05:02.000Z",
+                              "uid": "35240-3f8078fe-31fd-4952-96c4-754f49c83714"
+                            }
+                          ],
+                          "id": "3bafa230-0a74-4552-b1ba-d3550f44e987",
+                          "createdAt": "2026-07-28T03:05:02.000Z",
+                          "updatedAt": "2026-07-28T03:05:02.000Z",
+                          "uid": "35240-3bafa230-0a74-4552-b1ba-d3550f44e987"
+                        },
+                        {
+                          "name": "List Scan Policies",
+                          "id": "48b03195-0f4d-4a32-97fc-9b6c3fa21d70",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/policy",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "policy"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5b29d1c6-73ec-44be-9518-fc71c4a9bbd2",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "List all scan policies for an organization."
+                          },
+                          "response": [
+                            {
+                              "id": "7cc8d005-ee42-4266-95ee-5c7336ef5148",
+                              "name": "List of scan policies",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/policy",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "policy"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"policies\": [\n    {\n      \"policyId\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"rules\": [\n        {\n          \"commodoa__\": true,\n          \"esse_c8\": 52299625.54134601\n        },\n        {\n          \"velit_0\": -16124672\n        }\n      ]\n    },\n    {\n      \"policyId\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"rules\": [\n        {\n          \"nisie6\": 93933820,\n          \"incididunt_ed3\": 53556272.27314338,\n          \"dolor__9\": \"labore adipisicing exercitation\"\n        },\n        {\n          \"et7\": 99334952,\n          \"minim__8\": 98357357\n        }\n      ]\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:05:02.000Z",
+                              "updatedAt": "2026-07-28T03:05:02.000Z",
+                              "uid": "35240-7cc8d005-ee42-4266-95ee-5c7336ef5148"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:05:02.000Z",
+                          "updatedAt": "2026-07-28T03:05:02.000Z",
+                          "uid": "35240-48b03195-0f4d-4a32-97fc-9b6c3fa21d70"
+                        },
+                        {
+                          "name": "Create Scan Policy",
+                          "id": "cc474170-9504-4a33-b3d8-c5b4887619ff",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/policy",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "policy"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "de0b17e2-a3e7-46a1-9724-5e4f2a56d77c",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Create a new scan policy for an organization."
+                          },
+                          "response": [
+                            {
+                              "id": "82f6c668-43a2-493b-a24e-7ade37628c7b",
+                              "name": "Created scan policy",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/policy",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "policy"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"policyId\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"rules\": [\n    {\n      \"cillumd36\": -64145973.571583204\n    },\n    {\n      \"ullamco_ff\": 68510707.81600979\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:05:02.000Z",
+                              "updatedAt": "2026-07-28T03:05:02.000Z",
+                              "uid": "35240-82f6c668-43a2-493b-a24e-7ade37628c7b"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:05:02.000Z",
+                          "updatedAt": "2026-07-28T03:05:02.000Z",
+                          "uid": "35240-cc474170-9504-4a33-b3d8-c5b4887619ff"
+                        }
+                      ],
+                      "id": "abb9ac3f-cdac-45ca-91aa-1ce3ea5f034f",
+                      "createdAt": "2026-07-28T03:05:02.000Z",
+                      "updatedAt": "2026-07-28T03:05:02.000Z",
+                      "uid": "35240-abb9ac3f-cdac-45ca-91aa-1ce3ea5f034f"
+                    }
+                  ],
+                  "id": "2e7df6fd-8924-4efa-a6bd-b181a1af000c",
+                  "createdAt": "2026-07-28T03:05:02.000Z",
+                  "updatedAt": "2026-07-28T03:05:02.000Z",
+                  "uid": "35240-2e7df6fd-8924-4efa-a6bd-b181a1af000c"
+                }
+              ],
+              "id": "afe8c0cb-f0fc-4f4c-a8f2-a36d97ae9f79",
+              "createdAt": "2026-07-28T03:05:02.000Z",
+              "updatedAt": "2026-07-28T03:05:02.000Z",
+              "uid": "35240-afe8c0cb-f0fc-4f4c-a8f2-a36d97ae9f79"
+            }
+          ],
+          "id": "7ded8af4-abbb-4987-974f-c38beb23fc1d",
+          "createdAt": "2026-07-28T03:05:02.000Z",
+          "updatedAt": "2026-07-28T03:05:02.000Z",
+          "uid": "35240-7ded8af4-abbb-4987-974f-c38beb23fc1d"
+        }
+      ],
+      "id": "f079b458-4202-436c-8da9-0a5b21ffb56f",
+      "createdAt": "2026-07-28T03:05:02.000Z",
+      "updatedAt": "2026-07-28T03:05:02.000Z",
+      "uid": "35240-f079b458-4202-436c-8da9-0a5b21ffb56f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "info": {
+    "_postman_id": "7195e4d6-49ab-4dc5-82a4-1ee02c9f090e",
+    "name": "StackHawk Api Authentication Perch API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:53.000Z",
+    "updatedAt": "2026-07-28T03:04:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7195e4d6-49ab-4dc5-82a4-1ee02c9f090e"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "perch",
+              "item": [
+                {
+                  "name": "scan",
+                  "item": [
+                    {
+                      "name": "Request Scan Via Perch",
+                      "id": "71041676-9523-4fdf-94c8-c4628aa3167a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"appId\": \"<string>\",\n  \"envId\": \"<string>\",\n  \"configOptions\": {\n    \"laboris6\": -64242841.56876738,\n    \"sunt_0\": \"Lorem\",\n    \"anim4\": \"mollit eu\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/perch/scan",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "perch",
+                            "scan"
+                          ]
+                        },
+                        "description": "Trigger a scan via the Perch scan command interface."
+                      },
+                      "response": [
+                        {
+                          "id": "c9e07d4a-69b1-4393-af05-79ceaca7cc21",
+                          "name": "Scan initiated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"appId\": \"<string>\",\n  \"envId\": \"<string>\",\n  \"configOptions\": {\n    \"laboris6\": -64242841.56876738,\n    \"sunt_0\": \"Lorem\",\n    \"anim4\": \"mollit eu\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/perch/scan",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "perch",
+                                "scan"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"scanId\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:54.000Z",
+                          "updatedAt": "2026-07-28T03:04:54.000Z",
+                          "uid": "35240-c9e07d4a-69b1-4393-af05-79ceaca7cc21"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:54.000Z",
+                      "updatedAt": "2026-07-28T03:04:54.000Z",
+                      "uid": "35240-71041676-9523-4fdf-94c8-c4628aa3167a"
+                    }
+                  ],
+                  "id": "1ff9c47d-5b71-4303-8bd6-eab33648a894",
+                  "createdAt": "2026-07-28T03:04:54.000Z",
+                  "updatedAt": "2026-07-28T03:04:54.000Z",
+                  "uid": "35240-1ff9c47d-5b71-4303-8bd6-eab33648a894"
+                },
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "{scanId}",
+                      "item": [
+                        {
+                          "name": "Get Perch Scan Status",
+                          "id": "da0e450a-2df0-4770-a332-5ff4eed74aca",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/perch/status/:scanId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "perch",
+                                "status",
+                                ":scanId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "181c4e72-3a2d-4804-aaa6-08bc1975eaab",
+                                  "key": "scanId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Retrieve the status of a Perch-initiated scan."
+                          },
+                          "response": [
+                            {
+                              "id": "a8681b94-ed9f-4cf3-8633-15832637acdf",
+                              "name": "Scan status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/perch/status/:scanId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "perch",
+                                    "status",
+                                    ":scanId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "scanId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"scanId\": \"<string>\",\n  \"status\": \"RUNNING\",\n  \"progress\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T03:04:54.000Z",
+                              "updatedAt": "2026-07-28T03:04:54.000Z",
+                              "uid": "35240-a8681b94-ed9f-4cf3-8633-15832637acdf"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:54.000Z",
+                          "updatedAt": "2026-07-28T03:04:54.000Z",
+                          "uid": "35240-da0e450a-2df0-4770-a332-5ff4eed74aca"
+                        }
+                      ],
+                      "id": "66754d4a-0651-40ff-98eb-6cd1fbc53fc5",
+                      "createdAt": "2026-07-28T03:04:54.000Z",
+                      "updatedAt": "2026-07-28T03:04:54.000Z",
+                      "uid": "35240-66754d4a-0651-40ff-98eb-6cd1fbc53fc5"
+                    }
+                  ],
+                  "id": "6cff741e-63c5-4c74-92b2-8e7972b7686a",
+                  "createdAt": "2026-07-28T03:04:54.000Z",
+                  "updatedAt": "2026-07-28T03:04:54.000Z",
+                  "uid": "35240-6cff741e-63c5-4c74-92b2-8e7972b7686a"
+                }
+              ],
+              "id": "3b8b8719-386d-4557-82b1-f1a204ef8353",
+              "createdAt": "2026-07-28T03:04:54.000Z",
+              "updatedAt": "2026-07-28T03:04:54.000Z",
+              "uid": "35240-3b8b8719-386d-4557-82b1-f1a204ef8353"
+            }
+          ],
+          "id": "14f529ec-32c3-4d8c-ba7b-ecb3664ab50a",
+          "createdAt": "2026-07-28T03:04:54.000Z",
+          "updatedAt": "2026-07-28T03:04:54.000Z",
+          "uid": "35240-14f529ec-32c3-4d8c-ba7b-ecb3664ab50a"
+        }
+      ],
+      "id": "22b319ab-e20f-47e5-8452-ae152a2be4cd",
+      "createdAt": "2026-07-28T03:04:54.000Z",
+      "updatedAt": "2026-07-28T03:04:54.000Z",
+      "uid": "35240-22b319ab-e20f-47e5-8452-ae152a2be4cd"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

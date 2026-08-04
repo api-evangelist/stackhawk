@@ -1,0 +1,243 @@
+{
+  "info": {
+    "_postman_id": "7179b952-435b-4c3e-abe1-8e1de5a746ed",
+    "name": "StackHawk Api Authentication API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:46.000Z",
+    "updatedAt": "2026-07-28T03:04:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7179b952-435b-4c3e-abe1-8e1de5a746ed"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "auth",
+              "item": [
+                {
+                  "name": "login",
+                  "item": [
+                    {
+                      "name": "Login With API Key",
+                      "id": "3f021dcf-2b62-4712-855e-44558e77244e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) StackHawk API key from Settings > API Keys",
+                            "key": "X-ApiKey",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/auth/login",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "auth",
+                            "login"
+                          ]
+                        },
+                        "description": "Authenticate using an API key to obtain a JWT access token. The API key is passed in the X-ApiKey header. Tokens expire after 30 minutes."
+                      },
+                      "response": [
+                        {
+                          "id": "1571520b-9d99-4a7c-b945-0a5d944a49f2",
+                          "name": "JWT token response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) StackHawk API key from Settings > API Keys",
+                                "key": "X-ApiKey",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/auth/login",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "login"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"token\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T03:04:47.000Z",
+                          "updatedAt": "2026-07-28T03:04:47.000Z",
+                          "uid": "35240-1571520b-9d99-4a7c-b945-0a5d944a49f2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:47.000Z",
+                      "updatedAt": "2026-07-28T03:04:47.000Z",
+                      "uid": "35240-3f021dcf-2b62-4712-855e-44558e77244e"
+                    }
+                  ],
+                  "id": "4e61ff7e-8f19-4b88-a877-94bb2232e2b6",
+                  "createdAt": "2026-07-28T03:04:47.000Z",
+                  "updatedAt": "2026-07-28T03:04:47.000Z",
+                  "uid": "35240-4e61ff7e-8f19-4b88-a877-94bb2232e2b6"
+                },
+                {
+                  "name": "refresh-token",
+                  "item": [
+                    {
+                      "name": "Refresh Token",
+                      "id": "69882be8-6dac-42fd-a1a2-2f1b98ddcd36",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/auth/refresh-token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "auth",
+                            "refresh-token"
+                          ]
+                        },
+                        "description": "Refresh an existing JWT access token before it expires."
+                      },
+                      "response": [
+                        {
+                          "id": "6d95d6c6-6c53-4723-a86f-56b7a71c2717",
+                          "name": "Refreshed JWT token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/auth/refresh-token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "refresh-token"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"token\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T03:04:47.000Z",
+                          "updatedAt": "2026-07-28T03:04:47.000Z",
+                          "uid": "35240-6d95d6c6-6c53-4723-a86f-56b7a71c2717"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:47.000Z",
+                      "updatedAt": "2026-07-28T03:04:47.000Z",
+                      "uid": "35240-69882be8-6dac-42fd-a1a2-2f1b98ddcd36"
+                    }
+                  ],
+                  "id": "784cd690-ea34-4e5a-9f28-746613ef4a6a",
+                  "createdAt": "2026-07-28T03:04:47.000Z",
+                  "updatedAt": "2026-07-28T03:04:47.000Z",
+                  "uid": "35240-784cd690-ea34-4e5a-9f28-746613ef4a6a"
+                }
+              ],
+              "id": "0c8bed75-8cf8-4510-8eef-ce3a7466cd6b",
+              "createdAt": "2026-07-28T03:04:47.000Z",
+              "updatedAt": "2026-07-28T03:04:47.000Z",
+              "uid": "35240-0c8bed75-8cf8-4510-8eef-ce3a7466cd6b"
+            }
+          ],
+          "id": "be0b6a1c-19d4-49ba-9139-6ce5ded969f9",
+          "createdAt": "2026-07-28T03:04:47.000Z",
+          "updatedAt": "2026-07-28T03:04:47.000Z",
+          "uid": "35240-be0b6a1c-19d4-49ba-9139-6ce5ded969f9"
+        }
+      ],
+      "id": "f54dca5e-6764-4063-8fd3-77dd8517595c",
+      "createdAt": "2026-07-28T03:04:47.000Z",
+      "updatedAt": "2026-07-28T03:04:47.000Z",
+      "uid": "35240-f54dca5e-6764-4063-8fd3-77dd8517595c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}

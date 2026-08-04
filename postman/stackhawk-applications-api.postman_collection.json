@@ -1,0 +1,1359 @@
+{
+  "info": {
+    "_postman_id": "2a0813d3-551f-44e7-b37a-a7319efbd637",
+    "name": "StackHawk Api Authentication Applications API",
+    "description": "The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.\n\nContact Support:\n Email: support@stackhawk.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:47.000Z",
+    "updatedAt": "2026-07-28T03:04:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2a0813d3-551f-44e7-b37a-a7319efbd637"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "org",
+              "item": [
+                {
+                  "name": "{orgId}",
+                  "item": [
+                    {
+                      "name": "app",
+                      "item": [
+                        {
+                          "name": "Create Application",
+                          "id": "29f8bc90-497c-4abe-8179-b86ad656bcc1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/org/:orgId/app",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "org",
+                                ":orgId",
+                                "app"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3d8590b6-e314-4060-92fb-3de595932c90",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization ID"
+                                }
+                              ]
+                            },
+                            "description": "Create a new application in the specified organization."
+                          },
+                          "response": [
+                            {
+                              "id": "4abcf15a-07b1-43cb-860a-e5a7b62761e8",
+                              "name": "Created application",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/org/:orgId/app",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "org",
+                                    ":orgId",
+                                    "app"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"applicationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"organizationId\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:04:48.000Z",
+                              "updatedAt": "2026-07-28T03:04:48.000Z",
+                              "uid": "35240-4abcf15a-07b1-43cb-860a-e5a7b62761e8"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-29f8bc90-497c-4abe-8179-b86ad656bcc1"
+                        }
+                      ],
+                      "id": "432b55a1-3b2f-4389-9700-6a0a1148c231",
+                      "createdAt": "2026-07-28T03:04:48.000Z",
+                      "updatedAt": "2026-07-28T03:04:48.000Z",
+                      "uid": "35240-432b55a1-3b2f-4389-9700-6a0a1148c231"
+                    }
+                  ],
+                  "id": "a6491458-30bc-48bf-ac42-47bd11b85bce",
+                  "createdAt": "2026-07-28T03:04:48.000Z",
+                  "updatedAt": "2026-07-28T03:04:48.000Z",
+                  "uid": "35240-a6491458-30bc-48bf-ac42-47bd11b85bce"
+                }
+              ],
+              "id": "e5fcab9a-7676-4114-9c2c-46327cafe92e",
+              "createdAt": "2026-07-28T03:04:48.000Z",
+              "updatedAt": "2026-07-28T03:04:48.000Z",
+              "uid": "35240-e5fcab9a-7676-4114-9c2c-46327cafe92e"
+            },
+            {
+              "name": "app",
+              "item": [
+                {
+                  "name": "{orgId}",
+                  "item": [
+                    {
+                      "name": "list",
+                      "item": [
+                        {
+                          "name": "List Applications",
+                          "id": "3032def2-b68d-487b-8001-4ad9602679a1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/app/:orgId/list",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "app",
+                                ":orgId",
+                                "list"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "16c9065b-dd23-4c44-bd86-16e161c55e8b",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "List all applications for an organization."
+                          },
+                          "response": [
+                            {
+                              "id": "224cb475-8152-4b8b-ab4d-85278093e54e",
+                              "name": "List of applications",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/app/:orgId/list",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "app",
+                                    ":orgId",
+                                    "list"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"applications\": [\n    {\n      \"applicationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    },\n    {\n      \"applicationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:04:48.000Z",
+                              "updatedAt": "2026-07-28T03:04:48.000Z",
+                              "uid": "35240-224cb475-8152-4b8b-ab4d-85278093e54e"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-3032def2-b68d-487b-8001-4ad9602679a1"
+                        }
+                      ],
+                      "id": "5c6a232c-b997-4a13-a9ba-f84c8637696c",
+                      "createdAt": "2026-07-28T03:04:48.000Z",
+                      "updatedAt": "2026-07-28T03:04:48.000Z",
+                      "uid": "35240-5c6a232c-b997-4a13-a9ba-f84c8637696c"
+                    }
+                  ],
+                  "id": "3e17c1f2-ba3e-4182-979f-6b506483c1b1",
+                  "createdAt": "2026-07-28T03:04:48.000Z",
+                  "updatedAt": "2026-07-28T03:04:48.000Z",
+                  "uid": "35240-3e17c1f2-ba3e-4182-979f-6b506483c1b1"
+                },
+                {
+                  "name": "{appId}",
+                  "item": [
+                    {
+                      "name": "env",
+                      "item": [
+                        {
+                          "name": "list",
+                          "item": [
+                            {
+                              "name": "List Environments",
+                              "id": "79fa27c4-4564-4934-b054-662c126243b5",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/app/:appId/env/list",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "app",
+                                    ":appId",
+                                    "env",
+                                    "list"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4d087214-501f-4e50-ab7c-d28173c16030",
+                                      "key": "appId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "List all environments for an application."
+                              },
+                              "response": [
+                                {
+                                  "id": "8be901a6-4c2c-41e7-bba4-bce2d882ae16",
+                                  "name": "List of environments",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/app/:appId/env/list",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "app",
+                                        ":appId",
+                                        "env",
+                                        "list"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "appId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"environments\": [\n    {\n      \"envId\": \"<string>\",\n      \"appId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"autoTag\": \"<boolean>\"\n    },\n    {\n      \"envId\": \"<string>\",\n      \"appId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"autoTag\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:04:48.000Z",
+                                  "updatedAt": "2026-07-28T03:04:48.000Z",
+                                  "uid": "35240-8be901a6-4c2c-41e7-bba4-bce2d882ae16"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:04:48.000Z",
+                              "updatedAt": "2026-07-28T03:04:48.000Z",
+                              "uid": "35240-79fa27c4-4564-4934-b054-662c126243b5"
+                            }
+                          ],
+                          "id": "2f3d12be-0a1b-4797-bb9d-b9d9dacbd5de",
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-2f3d12be-0a1b-4797-bb9d-b9d9dacbd5de"
+                        },
+                        {
+                          "name": "{envId}",
+                          "item": [
+                            {
+                              "name": "Update Environment",
+                              "id": "c13ca90b-6708-4b74-a27e-51d1f9720389",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "app",
+                                    ":appId",
+                                    "env",
+                                    ":envId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "7c0b70b5-2ed9-49e0-91a4-13470d137678",
+                                      "key": "appId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "ad2c5d47-b789-490a-9232-8aa5adb0bb39",
+                                      "key": "envId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Update environment configuration."
+                              },
+                              "response": [
+                                {
+                                  "id": "1413d907-8cc7-48ae-9c7b-7709088539ad",
+                                  "name": "Updated environment",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "app",
+                                        ":appId",
+                                        "env",
+                                        ":envId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "appId"
+                                        },
+                                        {
+                                          "key": "envId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"envId\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"autoTag\": \"<boolean>\"\n}",
+                                  "createdAt": "2026-07-28T03:04:48.000Z",
+                                  "updatedAt": "2026-07-28T03:04:48.000Z",
+                                  "uid": "35240-1413d907-8cc7-48ae-9c7b-7709088539ad"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:04:48.000Z",
+                              "updatedAt": "2026-07-28T03:04:48.000Z",
+                              "uid": "35240-c13ca90b-6708-4b74-a27e-51d1f9720389"
+                            },
+                            {
+                              "name": "Delete Environment",
+                              "id": "9d9b38a3-6ebf-4a64-9c0e-1e7a8ada7972",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "app",
+                                    ":appId",
+                                    "env",
+                                    ":envId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "07de9699-c0aa-448c-88a8-d4ac6192be8c",
+                                      "key": "appId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "cbe5dc1d-e80d-4dea-a1d1-cbf8b70d1cf8",
+                                      "key": "envId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Delete an application environment."
+                              },
+                              "response": [
+                                {
+                                  "id": "e44cf82d-55be-42c4-8e64-0fe88af72a8e",
+                                  "name": "Environment deleted",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/app/:appId/env/:envId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "app",
+                                        ":appId",
+                                        "env",
+                                        ":envId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "appId"
+                                        },
+                                        {
+                                          "key": "envId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:04:48.000Z",
+                                  "updatedAt": "2026-07-28T03:04:48.000Z",
+                                  "uid": "35240-e44cf82d-55be-42c4-8e64-0fe88af72a8e"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:04:48.000Z",
+                              "updatedAt": "2026-07-28T03:04:48.000Z",
+                              "uid": "35240-9d9b38a3-6ebf-4a64-9c0e-1e7a8ada7972"
+                            }
+                          ],
+                          "id": "a806539b-2189-49ac-95a7-c2430888be5e",
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-a806539b-2189-49ac-95a7-c2430888be5e"
+                        },
+                        {
+                          "name": "Create Environment",
+                          "id": "81557cba-c2cb-4454-af8f-44acc538adfc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"autoTag\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/app/:appId/env",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "app",
+                                ":appId",
+                                "env"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6b2d6123-82c7-45a5-967e-67f93a396409",
+                                  "key": "appId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Create a new environment for an application."
+                          },
+                          "response": [
+                            {
+                              "id": "fa2b3e0d-f213-4467-8927-b79cabf6f9d4",
+                              "name": "Created environment",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"autoTag\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/app/:appId/env",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "app",
+                                    ":appId",
+                                    "env"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "appId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"envId\": \"<string>\",\n  \"appId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"autoTag\": \"<boolean>\"\n}",
+                              "createdAt": "2026-07-28T03:04:48.000Z",
+                              "updatedAt": "2026-07-28T03:04:48.000Z",
+                              "uid": "35240-fa2b3e0d-f213-4467-8927-b79cabf6f9d4"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-81557cba-c2cb-4454-af8f-44acc538adfc"
+                        }
+                      ],
+                      "id": "e0659346-d8bf-4529-9c2d-987b908e780e",
+                      "createdAt": "2026-07-28T03:04:48.000Z",
+                      "updatedAt": "2026-07-28T03:04:48.000Z",
+                      "uid": "35240-e0659346-d8bf-4529-9c2d-987b908e780e"
+                    },
+                    {
+                      "name": "Get Application",
+                      "id": "54333cef-1d12-4249-8a77-14fa469a32b6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/app/:appId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "app",
+                            ":appId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cde51724-0553-4ca3-881c-02e9619a7ba1",
+                              "key": "appId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve details for a specific application."
+                      },
+                      "response": [
+                        {
+                          "id": "cb91108d-a0eb-4426-8ac8-46f475850372",
+                          "name": "Application details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/app/:appId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "app",
+                                ":appId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"applicationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"organizationId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-cb91108d-a0eb-4426-8ac8-46f475850372"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:48.000Z",
+                      "updatedAt": "2026-07-28T03:04:48.000Z",
+                      "uid": "35240-54333cef-1d12-4249-8a77-14fa469a32b6"
+                    },
+                    {
+                      "name": "Update Application",
+                      "id": "362f2ef7-ffc2-4bef-9f32-48d57340282a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/app/:appId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "app",
+                            ":appId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2d1c5064-4675-4e09-833d-1bb4dcda5bb2",
+                              "key": "appId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Update application settings."
+                      },
+                      "response": [
+                        {
+                          "id": "147c5366-81b2-434f-bec8-4734477e2d4c",
+                          "name": "Updated application",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/app/:appId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "app",
+                                ":appId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"applicationId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"organizationId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-147c5366-81b2-434f-bec8-4734477e2d4c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:48.000Z",
+                      "updatedAt": "2026-07-28T03:04:48.000Z",
+                      "uid": "35240-362f2ef7-ffc2-4bef-9f32-48d57340282a"
+                    },
+                    {
+                      "name": "Delete Application",
+                      "id": "f5b26ddc-4392-4d0b-b9a3-2253a25c23dd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/app/:appId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "app",
+                            ":appId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8aa4624e-59b5-4785-925e-47d0a19756af",
+                              "key": "appId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Delete a StackHawk application."
+                      },
+                      "response": [
+                        {
+                          "id": "74b6b24b-b122-4ee6-a224-53915b902208",
+                          "name": "Application deleted",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/app/:appId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "app",
+                                ":appId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-74b6b24b-b122-4ee6-a224-53915b902208"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:48.000Z",
+                      "updatedAt": "2026-07-28T03:04:48.000Z",
+                      "uid": "35240-f5b26ddc-4392-4d0b-b9a3-2253a25c23dd"
+                    }
+                  ],
+                  "id": "b9e2ec40-1981-433a-b388-4c9e5f9586ed",
+                  "createdAt": "2026-07-28T03:04:48.000Z",
+                  "updatedAt": "2026-07-28T03:04:48.000Z",
+                  "uid": "35240-b9e2ec40-1981-433a-b388-4c9e5f9586ed"
+                }
+              ],
+              "id": "ba25294f-a29d-4929-a453-e1c85326c30d",
+              "createdAt": "2026-07-28T03:04:48.000Z",
+              "updatedAt": "2026-07-28T03:04:48.000Z",
+              "uid": "35240-ba25294f-a29d-4929-a453-e1c85326c30d"
+            }
+          ],
+          "id": "ee3704f5-5c0b-4564-aff1-8587eeba3b36",
+          "createdAt": "2026-07-28T03:04:48.000Z",
+          "updatedAt": "2026-07-28T03:04:48.000Z",
+          "uid": "35240-ee3704f5-5c0b-4564-aff1-8587eeba3b36"
+        },
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "org",
+              "item": [
+                {
+                  "name": "{orgId}",
+                  "item": [
+                    {
+                      "name": "apps",
+                      "item": [
+                        {
+                          "name": "List Applications V2",
+                          "id": "9468c2d1-8980-420d-b8f9-251c5a930c22",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/org/:orgId/apps?pageToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "org",
+                                ":orgId",
+                                "apps"
+                              ],
+                              "query": [
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "43a750e9-da85-45ff-8056-a25186fe2f65",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Paginated list of applications for an organization (v2)."
+                          },
+                          "response": [
+                            {
+                              "id": "7b3949f2-a118-415a-8a32-1b4f22485f35",
+                              "name": "Paginated applications",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/org/:orgId/apps?pageToken=<string>&pageSize=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "org",
+                                    ":orgId",
+                                    "apps"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "pageSize",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"applications\": [\n    {\n      \"applicationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    },\n    {\n      \"applicationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:04:48.000Z",
+                              "updatedAt": "2026-07-28T03:04:48.000Z",
+                              "uid": "35240-7b3949f2-a118-415a-8a32-1b4f22485f35"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-9468c2d1-8980-420d-b8f9-251c5a930c22"
+                        }
+                      ],
+                      "id": "299806f0-93ed-494b-a3b7-06ec80dfdd37",
+                      "createdAt": "2026-07-28T03:04:48.000Z",
+                      "updatedAt": "2026-07-28T03:04:48.000Z",
+                      "uid": "35240-299806f0-93ed-494b-a3b7-06ec80dfdd37"
+                    },
+                    {
+                      "name": "envs",
+                      "item": [
+                        {
+                          "name": "List Environments V2",
+                          "id": "afb0a51d-2f20-4fb3-a546-66a7cab3127d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/org/:orgId/envs?pageToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "org",
+                                ":orgId",
+                                "envs"
+                              ],
+                              "query": [
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d4011df1-88c9-48bc-9a61-5bc9e5e322af",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Paginated list of environments for an organization (v2)."
+                          },
+                          "response": [
+                            {
+                              "id": "ab1d4cf2-616e-4e32-8b84-1635b634d9c2",
+                              "name": "Paginated environments",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/org/:orgId/envs?pageToken=<string>&pageSize=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "org",
+                                    ":orgId",
+                                    "envs"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "pageSize",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"environments\": [\n    {\n      \"envId\": \"<string>\",\n      \"appId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"autoTag\": \"<boolean>\"\n    },\n    {\n      \"envId\": \"<string>\",\n      \"appId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"autoTag\": \"<boolean>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:04:48.000Z",
+                              "updatedAt": "2026-07-28T03:04:48.000Z",
+                              "uid": "35240-ab1d4cf2-616e-4e32-8b84-1635b634d9c2"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:04:48.000Z",
+                          "updatedAt": "2026-07-28T03:04:48.000Z",
+                          "uid": "35240-afb0a51d-2f20-4fb3-a546-66a7cab3127d"
+                        }
+                      ],
+                      "id": "d222d338-58a0-40cf-8d33-9a043eb1a2df",
+                      "createdAt": "2026-07-28T03:04:48.000Z",
+                      "updatedAt": "2026-07-28T03:04:48.000Z",
+                      "uid": "35240-d222d338-58a0-40cf-8d33-9a043eb1a2df"
+                    }
+                  ],
+                  "id": "7dbf24f3-edd1-45d4-a950-329fe7526801",
+                  "createdAt": "2026-07-28T03:04:48.000Z",
+                  "updatedAt": "2026-07-28T03:04:48.000Z",
+                  "uid": "35240-7dbf24f3-edd1-45d4-a950-329fe7526801"
+                }
+              ],
+              "id": "c8871462-32f2-4160-bd53-d84531202086",
+              "createdAt": "2026-07-28T03:04:48.000Z",
+              "updatedAt": "2026-07-28T03:04:48.000Z",
+              "uid": "35240-c8871462-32f2-4160-bd53-d84531202086"
+            }
+          ],
+          "id": "0dc9df1d-46b2-482c-a607-62a1dcd13ac1",
+          "createdAt": "2026-07-28T03:04:48.000Z",
+          "updatedAt": "2026-07-28T03:04:48.000Z",
+          "uid": "35240-0dc9df1d-46b2-482c-a607-62a1dcd13ac1"
+        }
+      ],
+      "id": "fbe6e5d3-36ba-46b4-b853-6132df82c88a",
+      "createdAt": "2026-07-28T03:04:48.000Z",
+      "updatedAt": "2026-07-28T03:04:48.000Z",
+      "uid": "35240-fbe6e5d3-36ba-46b4-b853-6132df82c88a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stackhawk.com"
+    }
+  ]
+}
