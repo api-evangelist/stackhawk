@@ -30,7 +30,7 @@ type: Index
 access: 3rd-Party
 created: '2025-01-08'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: stackhawk:stackhawk-api-authentication-api
   name: StackHawk Api Authentication API
