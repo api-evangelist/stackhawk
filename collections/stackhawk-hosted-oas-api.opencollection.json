@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "StackHawk Api Authentication Hosted OAS API",
+    "version": "0.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hosted OAS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload OpenAPI Spec File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/oas/:appId/upload",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload an OpenAPI specification file for an application."
+        },
+        {
+          "info": {
+            "name": "Get Application OpenAPI Specs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/oas/:appId/mapping",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the OpenAPI spec mapping for an application."
+        },
+        {
+          "info": {
+            "name": "Map Application OpenAPI Specs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/oas/:appId/mapping",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Map an OpenAPI spec to an application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

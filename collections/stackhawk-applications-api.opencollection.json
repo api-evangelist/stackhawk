@@ -1,0 +1,269 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "StackHawk Api Authentication Applications API",
+    "version": "0.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/org/:orgId/app",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new application in the specified organization."
+        },
+        {
+          "info": {
+            "name": "List Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:orgId/list",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all applications for an organization."
+        },
+        {
+          "info": {
+            "name": "List Applications V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v2/org/:orgId/apps",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Paginated list of applications for an organization (v2)."
+        },
+        {
+          "info": {
+            "name": "Get Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific application."
+        },
+        {
+          "info": {
+            "name": "Update Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update application settings."
+        },
+        {
+          "info": {
+            "name": "Delete Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a StackHawk application."
+        },
+        {
+          "info": {
+            "name": "Create Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new environment for an application."
+        },
+        {
+          "info": {
+            "name": "List Environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/list",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all environments for an application."
+        },
+        {
+          "info": {
+            "name": "List Environments V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stackhawk.com/api/v2/org/:orgId/envs",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Paginated list of environments for an organization (v2)."
+        },
+        {
+          "info": {
+            "name": "Update Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update environment configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.stackhawk.com/api/v1/app/:appId/env/:envId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "envId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an application environment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

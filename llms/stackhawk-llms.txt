@@ -1,0 +1,49 @@
+# StackHawk Documentation
+
+> Documentation for StackHawk's application security testing platform. HawkScan is a DAST scanner that helps developers find and fix security vulnerabilities before they reach production.
+
+StackHawk provides dynamic application security testing (DAST) tools for modern development teams. This documentation covers scanner configuration, platform features, CI/CD integrations, and vulnerability remediation.
+
+## Documentation
+
+- [Getting Started](https://docs.stackhawk.com/getting-started/): Quick start guides and first scan setup
+- [HawkScan Configuration](https://docs.stackhawk.com/hawkscan/): Scanner configuration, authentication, and OpenAPI specs
+- [CI/CD Integration](https://docs.stackhawk.com/integrations/ci-cd/): GitHub Actions, GitLab CI, Jenkins, Azure DevOps
+- [Platform Features](https://docs.stackhawk.com/platform/): API Discovery, vulnerability management, team settings
+- [Integrations](https://docs.stackhawk.com/integrations/): Jira, Slack, Microsoft Teams, webhooks
+- [Vulnerability Reference](https://docs.stackhawk.com/vulnerabilities/): Detailed info on security vulnerabilities HawkScan detects
+
+## Key Topics
+
+- [Authenticated Scanning](https://docs.stackhawk.com/hawkscan/authenticated-scanning/): Configure auth for protected endpoints
+- [stackhawk.yml Reference](https://docs.stackhawk.com/hawkscan/configuration/): Full configuration file reference
+- [API Discovery](https://docs.stackhawk.com/platform/api-discovery/): Automatic API endpoint detection
+- [StackHawk CLI](https://docs.stackhawk.com/stackhawk-cli): Command-line interface reference
+- [MCP Server](https://docs.stackhawk.com/model-context-protocol): AI assistant integration
+
+## Downloads
+
+The `/downloads/` pages render client-side from machine-readable JSON manifests, so point tooling directly at the manifests for current install metadata — per-platform assets, versions, file sizes, SHA-256 checksums, and download URLs (each manifest exposes `latest` and `dev` releases).
+
+- [HawkScan Download Manifest](https://download.stackhawk.com/hawkdocs/hawk.manifest.json): HawkScan (DAST scanner) release assets, versions, checksums, and download URLs
+- [HawkOp Download Manifest](https://download.stackhawk.com/hawkdocs/hawkop.manifest.json): HawkOp (StackHawk CLI companion) release assets, versions, checksums, and download URLs
+
+## API Reference
+
+REST API reference for the StackHawk Public API ("Falcon"). Each operation has a dedicated page at `/api/{tag}/{operation}/`, and a plain-Markdown export is available at `/api/{tag}/{operation}.md` for ingestion by LLMs and scripting tools.
+
+- [API Reference Index](https://docs.stackhawk.com/api/): Operation pages grouped by tag
+- [OpenAPI Specification](https://docs.stackhawk.com/openapi.json): Machine-readable spec for the StackHawk Public API
+- [API Documentation (legacy)](https://docs.stackhawk.com/apidocs): Original REST API reference
+
+## Optional
+
+- [Support & FAQ](https://docs.stackhawk.com/support/): Troubleshooting and common questions
+- [Changelog](https://docs.stackhawk.com/changelog/): Release notes and updates
+
+## Contact
+
+- Website: https://www.stackhawk.com
+- Support: https://help.stackhawk.com
+- Documentation: https://docs.stackhawk.com
+- Status: https://status.stackhawk.com
