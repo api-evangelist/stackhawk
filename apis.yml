@@ -38,6 +38,8 @@ apis:
   humanURL: https://apidocs.stackhawk.com/docs
   baseURL: https://api.stackhawk.com
   tags:
+  - API / Authentication
+  tags_raw:
   - Api Authentication
   properties:
   - type: OpenAPI
@@ -50,6 +52,8 @@ apis:
   humanURL: https://apidocs.stackhawk.com/docs
   baseURL: https://api.stackhawk.com
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -98,6 +102,8 @@ apis:
   humanURL: https://apidocs.stackhawk.com/docs
   baseURL: https://api.stackhawk.com
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
