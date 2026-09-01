@@ -50,7 +50,7 @@ apis:
   humanURL: https://apidocs.stackhawk.com/docs
   baseURL: https://api.stackhawk.com
   tags:
-  - Api Authentication
+  - API / Authentication
   tags_raw:
   - Api Authentication
   properties:
