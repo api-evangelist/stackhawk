@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: StackHawk Api Authentication API
   description: The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.
@@ -13,7 +13,7 @@ servers:
 security:
 - BearerAuth: []
 tags:
-- name: Api Authentication
+- name: API Authentication
   description: Token management and login
 paths:
   /api/v1/auth/login:
@@ -22,7 +22,7 @@ paths:
       summary: Login With API Key
       description: Authenticate using an API key to obtain a JWT access token. The API key is passed in the X-ApiKey header. Tokens expire after 30 minutes.
       tags:
-      - Api Authentication
+      - API Authentication
       security: []
       parameters:
       - name: X-ApiKey
@@ -44,7 +44,7 @@ paths:
       summary: Refresh Token
       description: Refresh an existing JWT access token before it expires.
       tags:
-      - Api Authentication
+      - API Authentication
       responses:
         '200':
           description: Refreshed JWT token

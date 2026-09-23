@@ -1,20 +1,7 @@
 {
   "provider": "stackhawk",
   "sources": [
-    "stackhawk-api-authentication-api-openapi.yml",
-    "stackhawk-applications-api-openapi.yml",
-    "stackhawk-global-configuration-api-openapi.yml",
-    "stackhawk-hosted-oas-api-openapi.yml",
-    "stackhawk-organization-teams-api-openapi.yml",
-    "stackhawk-organizations-api-openapi.yml",
-    "stackhawk-perch-api-openapi.yml",
-    "stackhawk-profile-scans-api-openapi.yml",
-    "stackhawk-reports-api-openapi.yml",
-    "stackhawk-repositories-api-openapi.yml",
-    "stackhawk-scan-configuration-api-openapi.yml",
-    "stackhawk-scan-policies-api-openapi.yml",
-    "stackhawk-scan-results-api-openapi.yml",
-    "stackhawk-user-api-openapi.yml"
+    "_original/stackhawk-openapi.yml"
   ],
   "outputs": [
     "stackhawk-api-authentication-api-openapi.yml",
@@ -35,6 +22,25 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "stackhawk-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "stackhawk-api-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-applications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-global-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-hosted-oas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-organization-teams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-perch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-profile-scans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-repositories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-scan-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-scan-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-scan-results-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "stackhawk-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

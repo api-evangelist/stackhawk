@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: StackHawk Api Authentication Applications API
+  title: StackHawk Applications API
   description: The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.
   version: 0.0.1
   contact:
@@ -285,6 +285,36 @@ paths:
           description: Environment deleted
 components:
   schemas:
+    EnvironmentUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    PaginatedApplications:
+      type: object
+      properties:
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        nextPageToken:
+          type: string
+    NewApplicationRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    ApplicationUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
     Environment:
       type: object
       properties:
@@ -296,15 +326,15 @@ components:
           type: string
         autoTag:
           type: boolean
-    PaginatedEnvironments:
+    NewEnvironmentRequest:
       type: object
+      required:
+      - name
       properties:
-        environments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Environment'
-        nextPageToken:
+        name:
           type: string
+        autoTag:
+          type: boolean
     Application:
       type: object
       properties:
@@ -316,44 +346,14 @@ components:
           type: string
         organizationId:
           type: string
-    ApplicationUpdateRequest:
+    PaginatedEnvironments:
       type: object
       properties:
-        name:
-          type: string
-        description:
-          type: string
-    NewApplicationRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-    NewEnvironmentRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        autoTag:
-          type: boolean
-    PaginatedApplications:
-      type: object
-      properties:
-        applications:
+        environments:
           type: array
           items:
-            $ref: '#/components/schemas/Application'
+            $ref: '#/components/schemas/Environment'
         nextPageToken:
-          type: string
-    EnvironmentUpdateRequest:
-      type: object
-      properties:
-        name:
           type: string
   securitySchemes:
     BearerAuth:

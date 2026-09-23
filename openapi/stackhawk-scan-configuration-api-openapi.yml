@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: StackHawk Api Authentication Scan Configuration API
+  title: StackHawk Scan Configuration API
   description: The StackHawk Public API provides programmatic access to the StackHawk application and API security testing platform. Manage applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and security reports. Authentication requires obtaining a JWT token via the /api/v1/auth/login endpoint using an API key from the StackHawk platform settings.
   version: 0.0.1
   contact:
@@ -136,9 +136,6 @@ paths:
                 $ref: '#/components/schemas/ScanConfiguration'
 components:
   schemas:
-    ScanConfigurationUpdateRequest:
-      type: object
-      additionalProperties: true
     ScanConfiguration:
       type: object
       properties:
@@ -149,6 +146,9 @@ components:
         configData:
           type: object
           additionalProperties: true
+    ScanConfigurationUpdateRequest:
+      type: object
+      additionalProperties: true
   securitySchemes:
     BearerAuth:
       type: http
