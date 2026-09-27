@@ -285,6 +285,17 @@ paths:
           description: Environment deleted
 components:
   schemas:
+    Environment:
+      type: object
+      properties:
+        envId:
+          type: string
+        appId:
+          type: string
+        name:
+          type: string
+        autoTag:
+          type: boolean
     EnvironmentUpdateRequest:
       type: object
       properties:
@@ -299,42 +310,6 @@ components:
             $ref: '#/components/schemas/Application'
         nextPageToken:
           type: string
-    NewApplicationRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-    ApplicationUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-    Environment:
-      type: object
-      properties:
-        envId:
-          type: string
-        appId:
-          type: string
-        name:
-          type: string
-        autoTag:
-          type: boolean
-    NewEnvironmentRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        autoTag:
-          type: boolean
     Application:
       type: object
       properties:
@@ -346,6 +321,22 @@ components:
           type: string
         organizationId:
           type: string
+    NewEnvironmentRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        autoTag:
+          type: boolean
+    ApplicationUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
     PaginatedEnvironments:
       type: object
       properties:
@@ -354,6 +345,15 @@ components:
           items:
             $ref: '#/components/schemas/Environment'
         nextPageToken:
+          type: string
+    NewApplicationRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
           type: string
   securitySchemes:
     BearerAuth:

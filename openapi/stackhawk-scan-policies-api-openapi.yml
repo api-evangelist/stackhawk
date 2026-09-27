@@ -141,6 +141,15 @@ paths:
           description: Policy deleted
 components:
   schemas:
+    ScanPolicyUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
     NewScanPolicyRequest:
       type: object
       required:
@@ -166,15 +175,6 @@ components:
           items:
             type: object
             additionalProperties: true
-    ScanPolicyUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        rules:
-          type: array
-          items:
-            type: object
   securitySchemes:
     BearerAuth:
       type: http

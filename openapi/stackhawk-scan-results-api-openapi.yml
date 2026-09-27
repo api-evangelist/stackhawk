@@ -171,21 +171,27 @@ paths:
                 $ref: '#/components/schemas/Finding'
 components:
   schemas:
-    FindingListResponse:
+    Finding:
       type: object
       properties:
-        findings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Finding'
-    ScanListResponse:
-      type: object
-      properties:
-        scans:
-          type: array
-          items:
-            $ref: '#/components/schemas/Scan'
-        nextPageToken:
+        findingId:
+          type: string
+        scanId:
+          type: string
+        severity:
+          type: string
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+        title:
+          type: string
+        description:
+          type: string
+        path:
+          type: string
+        method:
           type: string
     Scan:
       type: object
@@ -210,28 +216,22 @@ components:
           format: date-time
         findingCount:
           type: integer
-    Finding:
+    ScanListResponse:
       type: object
       properties:
-        findingId:
+        scans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Scan'
+        nextPageToken:
           type: string
-        scanId:
-          type: string
-        severity:
-          type: string
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          - CRITICAL
-        title:
-          type: string
-        description:
-          type: string
-        path:
-          type: string
-        method:
-          type: string
+    FindingListResponse:
+      type: object
+      properties:
+        findings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Finding'
   securitySchemes:
     BearerAuth:
       type: http

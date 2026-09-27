@@ -66,26 +66,6 @@ paths:
                 $ref: '#/components/schemas/AuditListResponse'
 components:
   schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        email:
-          type: string
-        name:
-          type: string
-        organizationId:
-          type: string
-    AuditListResponse:
-      type: object
-      properties:
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditRecord'
-        nextPageToken:
-          type: string
     AuditRecord:
       type: object
       properties:
@@ -103,6 +83,15 @@ components:
         details:
           type: object
           additionalProperties: true
+    AuditListResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditRecord'
+        nextPageToken:
+          type: string
     MemberListResponse:
       type: object
       properties:
@@ -110,6 +99,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/User'
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        organizationId:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http
