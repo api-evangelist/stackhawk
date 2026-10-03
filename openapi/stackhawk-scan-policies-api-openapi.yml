@@ -141,8 +141,10 @@ paths:
           description: Policy deleted
 components:
   schemas:
-    ScanPolicyUpdateRequest:
+    NewScanPolicyRequest:
       type: object
+      required:
+      - name
       properties:
         name:
           type: string
@@ -150,10 +152,8 @@ components:
           type: array
           items:
             type: object
-    NewScanPolicyRequest:
+    ScanPolicyUpdateRequest:
       type: object
-      required:
-      - name
       properties:
         name:
           type: string

@@ -66,6 +66,22 @@ paths:
                 $ref: '#/components/schemas/AuditListResponse'
 components:
   schemas:
+    MemberListResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    AuditListResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditRecord'
+        nextPageToken:
+          type: string
     AuditRecord:
       type: object
       properties:
@@ -83,22 +99,6 @@ components:
         details:
           type: object
           additionalProperties: true
-    AuditListResponse:
-      type: object
-      properties:
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditRecord'
-        nextPageToken:
-          type: string
-    MemberListResponse:
-      type: object
-      properties:
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
     User:
       type: object
       properties:

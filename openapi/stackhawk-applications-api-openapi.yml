@@ -285,22 +285,6 @@ paths:
           description: Environment deleted
 components:
   schemas:
-    Environment:
-      type: object
-      properties:
-        envId:
-          type: string
-        appId:
-          type: string
-        name:
-          type: string
-        autoTag:
-          type: boolean
-    EnvironmentUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
     PaginatedApplications:
       type: object
       properties:
@@ -321,15 +305,6 @@ components:
           type: string
         organizationId:
           type: string
-    NewEnvironmentRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        autoTag:
-          type: boolean
     ApplicationUpdateRequest:
       type: object
       properties:
@@ -337,14 +312,21 @@ components:
           type: string
         description:
           type: string
-    PaginatedEnvironments:
+    Environment:
       type: object
       properties:
-        environments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Environment'
-        nextPageToken:
+        envId:
+          type: string
+        appId:
+          type: string
+        name:
+          type: string
+        autoTag:
+          type: boolean
+    EnvironmentUpdateRequest:
+      type: object
+      properties:
+        name:
           type: string
     NewApplicationRequest:
       type: object
@@ -354,6 +336,24 @@ components:
         name:
           type: string
         description:
+          type: string
+    NewEnvironmentRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        autoTag:
+          type: boolean
+    PaginatedEnvironments:
+      type: object
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+        nextPageToken:
           type: string
   securitySchemes:
     BearerAuth:

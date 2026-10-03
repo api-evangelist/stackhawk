@@ -136,9 +136,6 @@ paths:
                 $ref: '#/components/schemas/ScanConfiguration'
 components:
   schemas:
-    ScanConfigurationUpdateRequest:
-      type: object
-      additionalProperties: true
     ScanConfiguration:
       type: object
       properties:
@@ -149,6 +146,9 @@ components:
         configData:
           type: object
           additionalProperties: true
+    ScanConfigurationUpdateRequest:
+      type: object
+      additionalProperties: true
   securitySchemes:
     BearerAuth:
       type: http
