@@ -220,6 +220,9 @@ apis:
   - type: Documentation
     url: https://apidocs.stackhawk.com/docs
 common:
+  - type: CapabilityMap
+    url: capabilities/stackhawk-capability-edges.yml
+    name: StackHawk Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/stackhawk/overview
   - type: AgenticAccess
