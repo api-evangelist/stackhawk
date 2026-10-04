@@ -57,13 +57,6 @@ paths:
                 $ref: '#/components/schemas/PerchScanStatus'
 components:
   schemas:
-    PerchScanResponse:
-      type: object
-      properties:
-        scanId:
-          type: string
-        status:
-          type: string
     PerchScanStatus:
       type: object
       properties:
@@ -78,6 +71,13 @@ components:
           - FAILED
         progress:
           type: integer
+    PerchScanResponse:
+      type: object
+      properties:
+        scanId:
+          type: string
+        status:
+          type: string
     PerchScanRequest:
       type: object
       properties:

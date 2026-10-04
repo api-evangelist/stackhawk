@@ -285,6 +285,26 @@ paths:
           description: Environment deleted
 components:
   schemas:
+    NewEnvironmentRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        autoTag:
+          type: boolean
+    Environment:
+      type: object
+      properties:
+        envId:
+          type: string
+        appId:
+          type: string
+        name:
+          type: string
+        autoTag:
+          type: boolean
     PaginatedApplications:
       type: object
       properties:
@@ -293,6 +313,13 @@ components:
           items:
             $ref: '#/components/schemas/Application'
         nextPageToken:
+          type: string
+    ApplicationUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
           type: string
     Application:
       type: object
@@ -305,24 +332,6 @@ components:
           type: string
         organizationId:
           type: string
-    ApplicationUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-    Environment:
-      type: object
-      properties:
-        envId:
-          type: string
-        appId:
-          type: string
-        name:
-          type: string
-        autoTag:
-          type: boolean
     EnvironmentUpdateRequest:
       type: object
       properties:
@@ -337,15 +346,6 @@ components:
           type: string
         description:
           type: string
-    NewEnvironmentRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        autoTag:
-          type: boolean
     PaginatedEnvironments:
       type: object
       properties:

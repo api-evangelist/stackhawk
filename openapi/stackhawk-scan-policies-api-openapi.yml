@@ -152,15 +152,6 @@ components:
           type: array
           items:
             type: object
-    ScanPolicyUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        rules:
-          type: array
-          items:
-            type: object
     ScanPolicy:
       type: object
       properties:
@@ -175,6 +166,15 @@ components:
           items:
             type: object
             additionalProperties: true
+    ScanPolicyUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
   securitySchemes:
     BearerAuth:
       type: http

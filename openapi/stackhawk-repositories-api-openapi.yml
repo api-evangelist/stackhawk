@@ -141,16 +141,6 @@ paths:
           description: Repository deleted
 components:
   schemas:
-    NewRepositoryRequest:
-      type: object
-      required:
-      - name
-      - url
-      properties:
-        name:
-          type: string
-        url:
-          type: string
     Repository:
       type: object
       properties:
@@ -158,6 +148,16 @@ components:
           type: string
         organizationId:
           type: string
+        name:
+          type: string
+        url:
+          type: string
+    NewRepositoryRequest:
+      type: object
+      required:
+      - name
+      - url
+      properties:
         name:
           type: string
         url:

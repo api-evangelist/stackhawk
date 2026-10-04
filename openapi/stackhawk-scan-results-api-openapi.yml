@@ -171,13 +171,6 @@ paths:
                 $ref: '#/components/schemas/Finding'
 components:
   schemas:
-    FindingListResponse:
-      type: object
-      properties:
-        findings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Finding'
     Finding:
       type: object
       properties:
@@ -200,15 +193,13 @@ components:
           type: string
         method:
           type: string
-    ScanListResponse:
+    FindingListResponse:
       type: object
       properties:
-        scans:
+        findings:
           type: array
           items:
-            $ref: '#/components/schemas/Scan'
-        nextPageToken:
-          type: string
+            $ref: '#/components/schemas/Finding'
     Scan:
       type: object
       properties:
@@ -232,6 +223,15 @@ components:
           format: date-time
         findingCount:
           type: integer
+    ScanListResponse:
+      type: object
+      properties:
+        scans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Scan'
+        nextPageToken:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

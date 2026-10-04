@@ -203,6 +203,13 @@ paths:
                       $ref: '#/components/schemas/Team'
 components:
   schemas:
+    NewTeamRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
     Team:
       type: object
       properties:
@@ -218,13 +225,6 @@ components:
             type: string
     TeamUpdateRequest:
       type: object
-      properties:
-        name:
-          type: string
-    NewTeamRequest:
-      type: object
-      required:
-      - name
       properties:
         name:
           type: string
