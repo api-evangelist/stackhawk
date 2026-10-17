@@ -171,6 +171,13 @@ paths:
                 $ref: '#/components/schemas/Finding'
 components:
   schemas:
+    FindingListResponse:
+      type: object
+      properties:
+        findings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Finding'
     Finding:
       type: object
       properties:
@@ -193,13 +200,6 @@ components:
           type: string
         method:
           type: string
-    FindingListResponse:
-      type: object
-      properties:
-        findings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Finding'
     Scan:
       type: object
       properties:

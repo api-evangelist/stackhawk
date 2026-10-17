@@ -57,6 +57,23 @@ paths:
                 $ref: '#/components/schemas/PerchScanStatus'
 components:
   schemas:
+    PerchScanRequest:
+      type: object
+      properties:
+        appId:
+          type: string
+        envId:
+          type: string
+        configOptions:
+          type: object
+          additionalProperties: true
+    PerchScanResponse:
+      type: object
+      properties:
+        scanId:
+          type: string
+        status:
+          type: string
     PerchScanStatus:
       type: object
       properties:
@@ -71,23 +88,6 @@ components:
           - FAILED
         progress:
           type: integer
-    PerchScanResponse:
-      type: object
-      properties:
-        scanId:
-          type: string
-        status:
-          type: string
-    PerchScanRequest:
-      type: object
-      properties:
-        appId:
-          type: string
-        envId:
-          type: string
-        configOptions:
-          type: object
-          additionalProperties: true
   securitySchemes:
     BearerAuth:
       type: http

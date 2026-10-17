@@ -203,6 +203,11 @@ paths:
                       $ref: '#/components/schemas/Team'
 components:
   schemas:
+    TeamUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
     NewTeamRequest:
       type: object
       required:
@@ -223,11 +228,6 @@ components:
           type: array
           items:
             type: string
-    TeamUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
   securitySchemes:
     BearerAuth:
       type: http
