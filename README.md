@@ -1,4 +1,4 @@
-# StackHawk (stackhawk)
+# StackHawk
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,65 +66,205 @@
 
 StackHawk is an application and API security testing platform that helps engineering teams find, triage, and fix security vulnerabilities in their APIs and web applications. It provides Dynamic Application Security Testing (DAST) with deep OpenAPI spec integration, CI/CD pipeline automation, AI-powered spec generation, and an AppSec Intelligence platform for program-level visibility across the software development lifecycle.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/stackhawk/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/stackhawk/refs/heads/main/apis.yml)
+**Areas:** API Security · Application Security · DAST · Security Testing · Vulnerability Management
 
-## Scope
+## StackHawk on APIs.io
 
-- **Type:** Index
-- **Access:** 3rd-Party
+Everything profiled for StackHawk is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/stackhawk/](https://apis.io/providers/stackhawk/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (14)
 
-- API Security
-- Application Security
-- DAST
-- Security Testing
-- Vulnerability Management
+- [StackHawk Api Authentication API](https://apis.io/apis/stackhawk/stackhawk-api-authentication-api/) — Token management and login
+- [StackHawk Applications API](https://apis.io/apis/stackhawk/stackhawk-applications-api/) — Manage applications and environments
+- [StackHawk Global Configuration API](https://apis.io/apis/stackhawk/stackhawk-global-configuration-api/) — Organization-level configurations
+- [StackHawk Hosted OAS API](https://apis.io/apis/stackhawk/stackhawk-hosted-oas-api/) — OpenAPI spec uploads and mapping
+- [StackHawk Organization Teams API](https://apis.io/apis/stackhawk/stackhawk-organization-teams-api/) — Team creation and member assignment
+- [StackHawk Organizations API](https://apis.io/apis/stackhawk/stackhawk-organizations-api/) — Member management and audit logs
+- [StackHawk Perch API](https://apis.io/apis/stackhawk/stackhawk-perch-api/) — Scan command control
+- [StackHawk Profile Scans API](https://apis.io/apis/stackhawk/stackhawk-profile-scans-api/) — Profile scan analysis
+- [StackHawk Reports API](https://apis.io/apis/stackhawk/stackhawk-reports-api/) — Scan report generation
+- [StackHawk Repositories API](https://apis.io/apis/stackhawk/stackhawk-repositories-api/) — Repository management
+- [StackHawk Scan Configuration API](https://apis.io/apis/stackhawk/stackhawk-scan-configuration-api/) — Scan configuration file management
+- [StackHawk Scan Policies API](https://apis.io/apis/stackhawk/stackhawk-scan-policies-api/) — Security policy management
+- [StackHawk Scan Results API](https://apis.io/apis/stackhawk/stackhawk-scan-results-api/) — Scan result reporting and findings
+- [StackHawk User API](https://apis.io/apis/stackhawk/stackhawk-user-api/) — Authenticated user information
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-08
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### StackHawk API
+Model Context Protocol servers that expose the API to agents.
 
-The StackHawk Public API provides programmatic access to the StackHawk platform, enabling management of applications, environments, scan configurations, scan results, findings, repositories, teams, policies, and reports. Authentication uses JWT tokens obtained via API key.
+- [Moved to /providers/stackhawk/](https://apis.io/servers/stackhawk/stackhawk/)
 
-- **Human URL:** [https://apidocs.stackhawk.com/docs](https://apidocs.stackhawk.com/docs)
-- **Base URL:** `https://api.stackhawk.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- API Security
-- Applications
-- Scan Results
-- Security Testing
+- [Stackhawk Agentic Access](https://apis.io/agentic-access/stackhawk/stackhawk-agentic-access/)
 
-#### Properties
+#### JSON Schema (2)
 
-- [Documentation](https://apidocs.stackhawk.com/docs)
-- [OpenAPI](https://download.stackhawk.com/openapi/stackhawk-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/stackhawk/refs/heads/main/openapi/stackhawk-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/stackhawk.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/stackhawk.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-## Common Properties
+- [StackHawk Security Finding](https://apis.io/schemas/stackhawk/stackhawk-finding/)
+- [StackHawk Scan](https://apis.io/schemas/stackhawk/stackhawk-scan/)
 
-- [GitHub Organization](https://github.com/stackhawk)
-- [LinkedIn](https://www.linkedin.com/company/stackhawk)
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Stackhawk Scan Structure](https://apis.io/json-structure/stackhawk/stackhawk-scan-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Stackhawk Context](https://apis.io/jsonld/stackhawk/stackhawk-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [StackHawk Vocabulary](https://apis.io/vocabularies/stackhawk/stackhawk-vocabulary/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Stackhawk List Findings Example](https://apis.io/examples/stackhawk/stackhawk-list-findings-example/)
+
+#### Collections (29)
+
+Postman and Open Collection request collections.
+
+- [StackHawk API](https://apis.io/collections/stackhawk/open-stackhawk/)
+- [StackHawk Api Authentication API](https://apis.io/collections/stackhawk/open-stackhawk-api-authentication-api/)
+- [StackHawk Api Authentication Applications API](https://apis.io/collections/stackhawk/open-stackhawk-applications-api/)
+- [StackHawk Api Authentication Global Configuration API](https://apis.io/collections/stackhawk/open-stackhawk-global-configuration-api/)
+- [StackHawk Api Authentication Hosted OAS API](https://apis.io/collections/stackhawk/open-stackhawk-hosted-oas-api/)
+- [StackHawk Api Authentication Organization Teams API](https://apis.io/collections/stackhawk/open-stackhawk-organization-teams-api/)
+- [StackHawk Api Authentication Organizations API](https://apis.io/collections/stackhawk/open-stackhawk-organizations-api/)
+- [StackHawk Api Authentication Perch API](https://apis.io/collections/stackhawk/open-stackhawk-perch-api/)
+- [StackHawk Api Authentication Profile Scans API](https://apis.io/collections/stackhawk/open-stackhawk-profile-scans-api/)
+- [StackHawk Api Authentication Reports API](https://apis.io/collections/stackhawk/open-stackhawk-reports-api/)
+- [StackHawk Api Authentication Repositories API](https://apis.io/collections/stackhawk/open-stackhawk-repositories-api/)
+- [StackHawk Api Authentication Scan Configuration API](https://apis.io/collections/stackhawk/open-stackhawk-scan-configuration-api/)
+- [StackHawk Api Authentication Scan Policies API](https://apis.io/collections/stackhawk/open-stackhawk-scan-policies-api/)
+- [StackHawk Api Authentication Scan Results API](https://apis.io/collections/stackhawk/open-stackhawk-scan-results-api/)
+- [StackHawk Api Authentication User API](https://apis.io/collections/stackhawk/open-stackhawk-user-api/)
+- [StackHawk Api Authentication API](https://apis.io/collections/stackhawk/postman-stackhawk-api-authentication-api/)
+- [StackHawk Api Authentication Applications API](https://apis.io/collections/stackhawk/postman-stackhawk-applications-api/)
+- [StackHawk Api Authentication Global Configuration API](https://apis.io/collections/stackhawk/postman-stackhawk-global-configuration-api/)
+- [StackHawk Api Authentication Hosted OAS API](https://apis.io/collections/stackhawk/postman-stackhawk-hosted-oas-api/)
+- [StackHawk Api Authentication Organization Teams API](https://apis.io/collections/stackhawk/postman-stackhawk-organization-teams-api/)
+- [StackHawk Api Authentication Organizations API](https://apis.io/collections/stackhawk/postman-stackhawk-organizations-api/)
+- [StackHawk Api Authentication Perch API](https://apis.io/collections/stackhawk/postman-stackhawk-perch-api/)
+- [StackHawk Api Authentication Profile Scans API](https://apis.io/collections/stackhawk/postman-stackhawk-profile-scans-api/)
+- [StackHawk Api Authentication Reports API](https://apis.io/collections/stackhawk/postman-stackhawk-reports-api/)
+- [StackHawk Api Authentication Repositories API](https://apis.io/collections/stackhawk/postman-stackhawk-repositories-api/)
+- …and 4 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [StackHawk — jsonschema rules](https://apis.io/rules/stackhawk/stackhawk-jsonschema-spectral-rules/)
+- [StackHawk API Rules](https://apis.io/rules/stackhawk/stackhawk-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Stackhawk Authentication](https://apis.io/security/stackhawk/stackhawk-authentication/)
+- [Stackhawk Domain Security](https://apis.io/security/stackhawk/stackhawk-domain-security/)
+- [Stackhawk Trust Center](https://apis.io/security/stackhawk/stackhawk-trust-center/)
+- [Stackhawk Vulnerability Disclosure](https://apis.io/security/stackhawk/stackhawk-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Stackhawk Plans Pricing](https://apis.io/plans/stackhawk/stackhawk-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Stackhawk Rate Limits](https://apis.io/rate-limits/stackhawk/stackhawk-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Stackhawk Finops](https://apis.io/finops/stackhawk/stackhawk-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.stackhawk.com/)
 - [Documentation](https://docs.stackhawk.com/)
-- [API Reference](https://apidocs.stackhawk.com/docs)
-- [Getting Started](https://docs.stackhawk.com/)
-- [Blog](https://www.stackhawk.com/blog/)
-- [Changelog](https://docs.stackhawk.com/changelog.html)
+- [Getting started](https://docs.stackhawk.com/)
+- [API reference](https://apidocs.stackhawk.com/docs)
 - [Pricing](https://www.stackhawk.com/pricing/)
-- [Login](https://app.stackhawk.com/)
-- [L L Ms Txt](https://docs.stackhawk.com/llms.txt)
+- [Changelog](https://docs.stackhawk.com/changelog.html)
+- [Blog](https://www.stackhawk.com/blog/)
+- [GitHub](https://github.com/stackhawk)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 42.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 53.3 |
+| Contract governance | 9.8 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 40.5 |
+| Access clarity | 32.9 |
+
+**Agent readiness 24.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/stackhawk/](https://apis.io/providers/stackhawk/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for StackHawk: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/stackhawk/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
